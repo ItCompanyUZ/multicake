@@ -1,3 +1,15 @@
+from modeltranslation.admin import TranslationAdmin
 from django.contrib import admin
+from . import models
 
-# Register your models here.
+
+@admin.register(models.Cake)
+class CakeAdmin(TranslationAdmin):
+    list_display = ('name',)
+
+
+@admin.register(models.CakeType)
+class CakeTypeAdmin(TranslationAdmin):
+    list_display = ('name',)
+
+

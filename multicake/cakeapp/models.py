@@ -1,6 +1,8 @@
-from distutils.command.upload import upload
-from tabnanny import verbose
+from dataclasses import dataclass
+from msilib.schema import Error
 from django.db import models
+from django.db.models.signals import pre_save
+from django.dispatch import receiver
 from django.utils.translation import ugettext_lazy as _
 
 
@@ -57,4 +59,49 @@ class Portfolio(models.Model):
         verbose_name_plural = 'Bizning ishlar'
 
     
+class Contact(models.Model):
+    number = models.CharField(_('Telefon raqam'), max_length=13)
+    status = models.BooleanField(_('Holati'), default=False)
 
+
+    class Meta:
+        verbose_name = 'Kontakt'
+        verbose_name_plural = 'Kontaktlar'
+
+
+    def __str__(self) -> str:
+        return str(self.number)
+
+
+@receiver(pre_save, sender=Contact)
+def my_handler(sender, instance=None, created=False, **kwargs):
+
+    if str(instance)[0:4] != '+998' or len(str(instance)) < 13:
+        raise ValueError(_("Raqam noto\'g\'ri kiritildi"))
+        
+    
+
+class Order(models.Model):
+
+
+    class DeliveryTypes(models.IntegerChoices):
+        self_delivery = 1, _('Olib ketish')
+        delivery = 2, _('Yetkazib berish')
+
+
+    date = models.DateField(_('Qaysi kunga'))
+    cake = models.ForeignKey(Cake, on_delete=models.CASCADE, verbose_name='To\'rt')
+    number = models.CharField(_('Telefon raqam'), max_length=13)
+    how_many_kg = models.PositiveIntegerField(_('Kerakli hajim (kg)'))
+    filling = models.ForeignKey(Filling, on_delete=models.CASCADE, verbose_name='Nachinka')
+    writing = models.CharField(_('To\'rt ustidagi yozuv'), max_length=255)
+    type_of_delivery = models.PositiveIntegerField(_('Yetkazib berish turi'),  default=DeliveryTypes.self_delivery, choices=DeliveryTypes.choices)
+
+
+    class Meta:
+        verbose_name = 'Buyurtma'
+        verbose_name_plural = 'Buyurtmalar'
+
+
+    def __str__(self) -> str:
+        return f'{self.number} -> {self.cake.name}  {self.date} '

@@ -21,3 +21,14 @@ class FillingAdmin(TranslationAdmin):
 @admin.register(models.Portfolio)
 class PortfolioAdmin(admin.ModelAdmin):
     list_display = ('image',)
+
+
+@admin.register(models.Contact)
+class ContactAdmin(admin.ModelAdmin):
+    list_display = ('number', 'status')
+
+
+@admin.register(models.Order)
+class OrderAdmin(admin.ModelAdmin):
+    list_display = ('cake', 'date', 'number')
+

@@ -13,3 +13,11 @@ class CakeTypeAdmin(TranslationAdmin):
     list_display = ('name',)
 
 
+@admin.register(models.Filling)
+class FillingAdmin(TranslationAdmin):
+    list_display = ('name', 'composition')
+
+
+@admin.register(models.Portfolio)
+class PortfolioAdmin(admin.ModelAdmin):
+    list_display = ('image',)

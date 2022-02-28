@@ -1,5 +1,3 @@
-from dataclasses import dataclass
-from msilib.schema import Error
 from django.db import models
 from django.db.models.signals import pre_save
 from django.dispatch import receiver
@@ -8,6 +6,7 @@ from django.utils.translation import ugettext_lazy as _
 
 class CakeType(models.Model):
     name = models.CharField(_('Nomi'), max_length=100)
+    image = models.ImageField(_('Rasm'), upload_to='To\'rt turlari')
 
     class Meta:
         verbose_name = 'To\'rt turi'
@@ -78,8 +77,8 @@ def my_handler(sender, instance=None, created=False, **kwargs):
 
     if str(instance)[0:4] != '+998' or len(str(instance)) < 13:
         raise ValueError(_("Raqam noto\'g\'ri kiritildi"))
-        
-    
+
+
 
 class Order(models.Model):
 

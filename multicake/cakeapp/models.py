@@ -103,4 +103,4 @@ class Order(models.Model):
 
 
     def __str__(self) -> str:
-        return f'{self.number} -> {self.cake.name}  {self.date} '
+        return f'{self.number} -> {self.cake.name}  {self.date}'

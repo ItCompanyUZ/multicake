@@ -1,11 +1,10 @@
+from django.core.paginator import Paginator
 from django.shortcuts import render
 from . import models
 from django.views import View, generic
 from django.http import JsonResponse
 
-
- 
-
+from .models import Filling
 
 
 class PublisherDetailView(generic.TemplateView):
@@ -14,11 +13,18 @@ class PublisherDetailView(generic.TemplateView):
 
 
     def get_context_data(self, **kwargs):
+
+
+        filling = Filling.objects.all()[::-1]
+
+        filling_paginator = Paginator(filling, 3)
+        page_number = self.request.GET.get('page')
+
+
         context = super().get_context_data(**kwargs)
-
-
+        context['fillings'] = filling_paginator.get_page(page_number)
         context['cakes'] = models.CakeType.objects.all().order_by('-id')[:9]
-        context['fillings'] = models.Filling.objects.all().order_by('-id')[:4]
+        # context['fillings'] = models.Filling.objects.all().order_by('-id')[:4]
         context['portfolio'] = models.Portfolio.objects.all().order_by('-id')[:9]
 
         return context

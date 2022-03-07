@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from . import models
-from django.views import generic
+from django.views import View, generic
+from django.http import JsonResponse
 
 
  
@@ -31,6 +32,24 @@ class PublisherDetailView(generic.TemplateView):
 
 
 
+
+
+
+
+
+
+
+
+# class JsonListView(View):
+#     def get(self, *args, **kwargs):
+#         print(kwargs)
+#         upper = kwargs.get('num_fillings')
+#         lower = upper-3
+#         size = len(models.Filling.objects.all())
+#         max_size = True if upper >= size else False
+#         print(upper)
+#         fillings = list(models.Filling.objects.values()[lower:upper])
+#         return JsonResponse({'data': fillings, 'max': max_size}, safe=False)
 
 def main(request):
     return render(request, 'index.html')

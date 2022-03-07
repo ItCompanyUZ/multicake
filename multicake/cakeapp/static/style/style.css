@@ -1,5 +1,12 @@
 @import "font.css";
 
+
+.not-visible {
+    display: none;
+}
+
+
+
 :root {
     --main-bg: #FAFDFF;
     --white: #fff;

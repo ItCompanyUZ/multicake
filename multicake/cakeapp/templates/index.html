@@ -1,191 +1,29 @@
+{% extends 'base.html' %}
 {% load static i18n %}
-<!DOCTYPE html>
-<html lang="ru">
-
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="robots" content="index, follow, noodp">
-  <meta name="googlebot" content="index, follow">
-  <meta name="google" content="notranslate">
-  <title>
-    Торты на заказ в Ташкенте | Цены и фото | Большой каталог товаров
-  </title>
-  <link rel="stylesheet" href="{% static 'style/all.min.css' %}">
-  <link rel="stylesheet" href="{% static 'style/bootstrap.min.css' %}">
-  <link rel="stylesheet" href="{% static 'style/style.css' %}">
-  <link rel="stylesheet" href="{% static 'style/media.css' %}">
-</head>
-
-<body>
-  <header class="header" id="header">
-    <div class="container-fluid">
-      <nav class="navbar header__nav">
-        <div class="header__logo">
-          <a class="header__logo logo" href="index.html"><img src="{% static 'img/header-logo/1.png' %}" alt="лого" class="logo-img" /></a>
-        </div>
-        <div class="header__menu">
-          <ul class="navbar-nav menu">
-            <li class="nav-item active">
-              <a class="menu__link" href="product.html">Торты</a>
-            </li>
-            <li class="nav-item">
-              <a class="menu__link" href="baked.html">Начинки</a>
-            </li>
-            <li class="nav-item">
-              <a class="menu__link" href="delivery.html">Доставка</a>
-            </li>
-            <li class="nav-item">
-              <a class="menu__link" href="work.html">Наши работы</a>
-            </li>
-            <li class="nav-item">
-              <a class="menu__link" href="contact.html">Контакты</a>
-            </li>
-          </ul>
-        </div>
-        <div class="contacts d-flex align-items-center">
-          <div class="contacts__desc">
-            <a href="tel:+998881599990" class="contacts__phone">+998 (88) 159-99-90</a>
-            <p class="contacts__info">график работы с 10:00 до 20:00</p>
-          </div>
-          <div class="contacts__link">
-            <a href="https://www.instagram.com/multi_cake1/?igshid=1dfozn5vmm8uz" class="contacts__link-social">
-              <img src="{% static 'img/contact-social/instagram-con.svg' %}" alt="instagram" class="contacts__link-social-img" />
-            </a>
-            <a href="https://t.me/cook_cakedipush" class="contacts__link-social">
-              <img src="{% static 'img/contact-social/telegram-con.svg' %}" alt="telegram" class="contacts__link-social-img" />
-            </a>
-          </div>
-        </div>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <i class="fas fa-bars"></i>
-        </button>
-      </nav>
-    </div>
-    <div class="header__info">
-      <div class="header__info-content container">
-        <h1 class="header__title">Выпечка и Доставка тортов в ташкенте</h1>
-        <div class="header__content">
-          <p class="header__content-desc">
-            Индивидуальный подход к каждому клиенту
-          </p>
-          <p class="header__content-desc">Большой ассортимент</p>
-          <p class="header__content-desc">Бесплатная доставка по городу Ташкент</p>
-        </div>
-      </div>
-    </div>
-  </header>
-  <main class="main" id="main">
-
-
-<!-- ******************************************************************************************************************************************* -->
+{% block content %}
 
 
     <section class="product">
       <div class="container">
         <h2 class="product__title title">наша продукция</h2>
+
+       
         <div class="tabs__content d-flex flex-wrap justify-content-between">
+          {% for cake in cakes %}
           <div class="tabs__content-block">
             <div class="tabs__content-block-img position-relative">
               <a href="product.html" class="tabs__content-link">
-                <img src="{% static 'img/main-products/1.png' %}" alt="" class="tabs__content-img" />
+                <img src="{{ cake.image.url }}" alt="" class="tabs__content-img" />
                 <a href="product.html" class="look">Смотреть больше <span class="look__border"></span></a>
               </a>
             </div>
             <div class="tabs__content-article">
-              <h3 class="tabs__content-article-title tabs__content-article-dist">Детские торты</h3>
+              <h3 class="tabs__content-article-title tabs__content-article-dist">{{ cake.name }}</h3>
             </div>
           </div>
-          <div class="tabs__content-block">
-            <div class="tabs__content-block-img position-relative">
-              <a href="product.html" class="tabs__content-link">
-                <img src="img/main-products/2.png" alt="" class="tabs__content-img" />
-                <a href="product.html" class="look">Смотреть больше <span class="look__border"></span></a>
-              </a>
-            </div>
-            <div class="tabs__content-article">
-              <h3 class="tabs__content-article-title tabs__content-article-dist">Свадебные торты</h3>
-            </div>
-          </div>
-          <div class="tabs__content-block">
-            <div class="tabs__content-block-img position-relative">
-              <a href="product.html" class="tabs__content-link">
-                <img src="img/main-products/3.png" alt="" class="tabs__content-img" />
-                <a href="product.html" class="look">Смотреть больше <span class="look__border"></span></a>
-              </a>
-            </div>
-            <div class="tabs__content-article">
-              <h3 class="tabs__content-article-title tabs__content-article-dist">Корпаративные торты</h3>
-            </div>
-          </div>
-          <div class="tabs__content-block">
-            <div class="tabs__content-block-img position-relative">
-              <a href="product.html" class="tabs__content-link">
-                <img src="img/main-products/4.png" alt="" class="tabs__content-img" />
-                <a href="product.html" class="look">Смотреть больше <span class="look__border"></span></a>
-              </a>
-            </div>
-            <div class="tabs__content-article">
-              <h3 class="tabs__content-article-title tabs__content-article-dist">Торты для мужчин</h3>
-            </div>
-          </div>
-          <div class="tabs__content-block">
-            <div class="tabs__content-block-img position-relative">
-              <a href="product.html" class="tabs__content-link">
-                <img src="img/main-products/5.png" alt="" class="tabs__content-img" />
-                <a href="product.html" class="look">Смотреть больше <span class="look__border"></span></a>
-              </a>
-            </div>
-            <div class="tabs__content-article">
-              <h3 class="tabs__content-article-title tabs__content-article-dist">Торты для женщин</h3>
-            </div>
-          </div>
-          <div class="tabs__content-block">
-            <div class="tabs__content-block-img position-relative">
-              <a href="product.html" class="tabs__content-link">
-                <img src="img/main-products/6.jpg" alt="" class="tabs__content-img" />
-                <a href="product.html" class="look">Смотреть больше <span class="look__border"></span></a>
-              </a>
-            </div>
-            <div class="tabs__content-article">
-              <h3 class="tabs__content-article-title tabs__content-article-dist">Домашняя выпечка</h3>
-            </div>
-          </div>
-          <div class="tabs__content-block">
-            <div class="tabs__content-block-img position-relative">
-              <a href="product.html" class="tabs__content-link">
-                <img src="img/main-products/7.jpg" alt="" class="tabs__content-img" />
-                <a href="product.html" class="look">Смотреть больше <span class="look__border"></span></a>
-              </a>
-            </div>
-            <div class="tabs__content-article">
-              <h3 class="tabs__content-article-title tabs__content-article-dist">Муссовые торты</h3>
-            </div>
-          </div>
-          <div class="tabs__content-block">
-            <div class="tabs__content-block-img position-relative">
-              <a href="product.html" class="tabs__content-link">
-                <img src="img/main-products/8.jpg" alt="" class="tabs__content-img" />
-                <a href="product.html" class="look">Смотреть больше <span class="look__border"></span></a>
-              </a>
-            </div>
-            <div class="tabs__content-article">
-              <h3 class="tabs__content-article-title tabs__content-article-dist">Романтические торты</h3>
-            </div>
-          </div>
-          <div class="tabs__content-block">
-            <div class="tabs__content-block-img position-relative">
-              <a href="product.html" class="tabs__content-link">
-                <img src="img/main-products/9.jpg" alt="" class="tabs__content-img" />
-                <a href="product.html" class="look">Смотреть больше <span class="look__border"></span></a>
-              </a>
-            </div>
-            <div class="tabs__content-article">
-              <h3 class="tabs__content-article-title tabs__content-article-dist">Пирожные и десерты</h3>
-            </div>
-          </div>
+          {% endfor %}
         </div>
+       
       </div>
     </section>
 
@@ -200,46 +38,42 @@
     <section class="baked">
       <div class="container">
         <h2 class="product__title title">Выпечка любой сложности на заказ</h2>
+
+        {% for filling in fillings %}
+
+        {% if forloop.counter|divisibleby:2 %}
+        
+        <div class="baked__right d-flex align-items-center justify-content-end">
+          <div class="baked__info1">
+            <h4 class="baked__title text-uppercase fw-bold">{{ filling.name }}</h4>
+            <p class="baked-info">
+              Состав: {{ filling.composition }}
+            </p>
+          </div>
+          <div class="baked__left-img">
+            <img src="{{ filling.image.url }}" alt="" class="baked-img">
+          </div>
+        </div> 
+
+  
+        
+        {% else %}
+
         <div class="baked__left d-flex align-items-center justify-content-start">
           <div class="baked__left-img">
-            <img src="{% static 'img/baking/1.jpg' %}" alt="" class="baked-img">
+            <img src="{{ filling.image.url }}" alt="" class="baked-img">
           </div>
           <div class="baked__info d-flex flex-column">
-            <h4 class="baked__title text-uppercase fw-bold">шоколадный</h4>
+            <h4 class="baked__title text-uppercase fw-bold">{{ filling.name }}</h4>
             <p class="baked-info">
-              Состав: шифоновый бисквит, начинка кофе, крем мороженого, банан и орех
+              Состав: {{ filling.composition }}
             </p>
           </div>
         </div>
-        <div class="baked__right d-flex align-items-center justify-content-between">
-          <div class="baked__info1">
-            <h4 class="baked__title text-uppercase fw-bold">Молочная девочка</h4>
-            <p class="baked-info">
-              Состав: крем мороженого, начинка и разные фрукты
-            </p>
-          </div>
-          <div class="baked__right-img"><img src="img/baking/2.jpg" alt="" class="baked-img"></div>
-        </div>
-        <div class="baked__left d-flex align-items-center justify-content-start">
-          <div class="baked__left-img">
-            <img src="img/baking/3.jpg" alt="" class="baked-img">
-          </div>
-          <div class="baked__info d-flex flex-column">
-            <h4 class="baked__title text-uppercase fw-bold">Баунти</h4>
-            <p class="baked-info">
-              Состав: 2 слоя творожного суфле с фруктами, 1 слой морожного крема и баунти начинка
-            </p>
-          </div>
-        </div>
-        <div class="baked__right d-flex align-items-center justify-content-between">
-          <div class="baked__info1">
-            <h4 class="baked__title text-uppercase fw-bold">бискотти</h4>
-            <p class="baked-info">
-              Состав: шифоновый бисквит, песочный корж, крем кофейний с малинами
-            </p>
-          </div>
-          <div class="baked__right-img"><img src="img/baking/4.jpg" alt="" class="baked-img"></div>
-        </div>
+
+        {% endif %}
+
+        {% endfor %}
         <a href="baked.html" class="baked__btn text-center d-block">Ещё</a>
       </div>
     </section>
@@ -248,15 +82,15 @@
         <h2 class="delivery__title title">доставка</h2>
         <div class="delivery__info d-flex flex-wrap justify-content-around">
           <div class="delivery__info-content d-flex flex-column align-items-center">
-            <img src="img/delivery/1.jpg" alt="" class="delivery__info-img " />
+            <img src="{% static "img/delivery/1.jpg" %}" alt="" class="delivery__info-img " />
             <h3 class="delivery__info-title">своевременная доставка</h3>
           </div>
           <div class="delivery__info-content d-flex flex-column align-items-center">
-            <img src="img/delivery/2.jpg" alt="" class="delivery__info-img " />
+            <img src="{% static "img/delivery/2.jpg" %}" alt="" class="delivery__info-img " />
             <h3 class="delivery__info-title">самовывоз</h3>
           </div>
           <div class="delivery__info-content d-flex flex-column align-items-center">
-            <img src="img/delivery/3.jpg" alt="" class="delivery__info-img " />
+            <img src="{% static "img/delivery/3.jpg" %}" alt="" class="delivery__info-img " />
             <h3 class="delivery__info-title">доставка курьером</h3>
           </div>
         </div>
@@ -272,21 +106,37 @@
     <section class="work">
       <div class="container">
         <h2 class="work__title delivery__title title align-items-center">наши работы</h2>
-        <img src="{% static 'img/our-work/1.png' %}" alt="наши работы" class="work__img" />
+        {% comment %} <img src="{% static 'img/our-work/1.png' %}" alt="наши работы" class="work__img" /> {% endcomment %}
         <div class="work__content">
           <section class="main_content d-flex flex-wrap justify-content-between">
-            <img src="{% static 'img/our-work/2.png' %}" alt="" class="work__content-img" />
-            <img src="{% static 'img/our-work/3.png' %}" alt="" class="work__content-img" />
+            {% comment %} <img src="{% static 'img/our-work/2.png' %}" alt="" class="work__content-img" /> {% endcomment %}
+
+
+
+
+            {% for work in portfolio%}
+
+            
+            <img src="{{ work.image.url }}" alt="" class="work__content-img" />
+
+
+            {% endfor %}
+
+
+            {% comment %} <img src="{% static 'img/our-work/3.png' %}" alt="" class="work__content-img" />
             <img src="{% static 'img/our-work/4.png' %}" alt="" class="work__content-img" />
             <img src="{% static 'img/our-work/5.png' %}" alt="" class="work__content-img " />
             <img src="{% static 'img/our-work/6.png' %}" alt="" class="work__content-img" />
+
+
+
             <div class="position-relative work__content-img-div">
               <a href="https://www.instagram.com/multi_cake1/?igshid=1dfozn5vmm8uz" target="_blank"
                 class="work__content-img-link">
                 <img src="{% static 'img/our-work/7.jpg' %}" alt="" class="work__content-img  position-relative" />
                 <p class="work__content-img-info">Больше работ в нашем инстаграме</p>
               </a>
-            </div>
+            </div> {% endcomment %}
           </section>
         </div>
       </div>
@@ -346,68 +196,4 @@
 
 <!-- ******************************************************************************************************************************************* -->
 
-
-
-
-
-  </main>
-  <footer class="footer" id="footer">
-    <div class="container">
-      <div class="footer__content d-flex justify-content-between">
-        <div class="footer__content-info footer__content-info-dist">
-          <p class="footer__content-title">Навигация</p>
-          <ul class="footer__content-nav p-0 m-0">
-            <li><a href="product.html" class="footer__content-link footer__content-link-dist">Торты</a></li>
-            <li>
-              <a href="baked.html" class="footer__content-link footer__content-link-dist">Начинки</a>
-            </li>
-            <li><a href="delivery.html" class="footer__content-link footer__content-link-dist">Доставка</a></li>
-            <li><a href="work.html" class="footer__content-link footer__content-link-dist">Наши работы</a></li>
-            <li><a href="contact.html" class="footer__content-link footer__content-link-dist">Контакты</a></li>
-          </ul>
-        </div>
-        <div class="footer__content-info">
-          <div class="footer__contacts-content">
-            <p class="footer__content-title">Контакты</p>
-            <ul class="footer__content-nav p-0 m-0">
-              <li>
-                <p class="footer__content-link footer__content-desc footer__content-link-left">
-                  Yunusobod tumani katta xasanboy 4 tor ko'chasi 60-uy
-                </p>
-              </li>
-              <li>
-                <a href="tel:+998881599990" class="footer__content-link">+998 (88) 159-99-90</a>
-              </li>
-              <li>
-                <a href="mailto:pastryclub@gmail.com" class="footer__content-link">pastryclub@gmail.com</a>
-              </li>
-            </ul>
-          </div>
-          <div class="footer__content-info footer__content-info-margin">
-            <p class="footer__content-title-margin">Социальные сети</p>
-            <div class="footer__social-cent d-flex align-items-center justify-content-start">
-              <a href="https://www.instagram.com/multi_cake1/?igshid=1dfozn5vmm8uz" class="footer__content-social-link">
-                <img src="{% static 'img/contact-social/instagram-con.svg' %}" alt="instagram" class="footer__content-social-img" />
-              </a>
-              <a href="https://t.me/cook_cakedipush" class="footer__content-social-link">
-                <img src="{% static 'img/contact-social/telegram-con.svg' %}" alt="telegram" class="footer__content-social-img" />
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="footer__logo d-flex align-items-center">
-          <a href="index.html">
-            <img src="{% static 'img/logo-foot.svg' %}" alt="logo" class="footer__logo-img" />
-          </a>
-        </div>
-      </div>
-    </div>
-  </footer>
-
-
-  <script src="js/jquery-3.5.1.min.js"></script>
-  <script src="js/bootstrap.min.js"></script>
-  <script src="js/main.js"></script>
-</body>
-
-</html>
+{% endblock %}

@@ -201,11 +201,13 @@ a:hover {
 
 .baked__right {
     margin-top: 30px;
-    text-align: left;
 }
 
 .baked__info1 {
     margin-right: 30px;
+    text-align: right;
+
+    
 }
 
 .baked__btn {

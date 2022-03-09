@@ -4,6 +4,21 @@ from django.dispatch import receiver
 from django.utils.translation import ugettext_lazy as _
 
 
+
+
+class Banner(models.Model):
+    image = models.ImageField(_('Rasm'), upload_to='Banner')
+
+
+    class Meta:
+        verbose_name = 'Banner'
+        verbose_name_plural = 'Bannerlar'
+
+
+
+
+
+
 class CakeType(models.Model):
     name = models.CharField(_('Nomi'), max_length=100)
     image = models.ImageField(_('Rasm'), upload_to='To\'rt turlari')

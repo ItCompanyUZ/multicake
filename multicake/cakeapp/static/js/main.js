@@ -33,6 +33,20 @@ for (let i = 0; i < images.length; i++) {
     })
 }
 
+
+function plusSlides(n){
+    counter+=n;
+    slidefun(counter)
+    resetTimer();
+}
+
+function currentSlide(n){
+    counter=n
+    slidefun(counter)
+    resetTimer()
+}
+
+
 // const postsBox = document.getElementById('filling-box')
 // const fillingBox = document.getElementById('filling-box')
 // const spinnerBox = document.getElementById('spinner-box') 

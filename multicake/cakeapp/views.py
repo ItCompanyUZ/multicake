@@ -25,6 +25,7 @@ class PublisherDetailView(generic.TemplateView):
         context['fillings'] = filling_paginator.get_page(page_number)
         context['cakes'] = models.CakeType.objects.all().order_by('-id')[:9]
         context['portfolio'] = models.Portfolio.objects.all().order_by('-id')[:9]
+        context['banner'] = models.Banner.objects.all().order_by('-id')
 
         return context
 

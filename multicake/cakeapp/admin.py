@@ -32,3 +32,9 @@ class ContactAdmin(admin.ModelAdmin):
 class OrderAdmin(admin.ModelAdmin):
     list_display = ('cake', 'date', 'number')
 
+
+
+@admin.register(models.Banner)
+class BannerAdmin(admin.ModelAdmin):
+    list_display = ('image',)
+

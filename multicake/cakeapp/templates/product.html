@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% load static i18n %}
+{% block content %}
+
+
+{% for cakeproduct in cakeproduct %}
+
+{{ cakeproduct.name }}
+{{ cakeproduct.image }}
+
+{% endfor %}
+
+{% endblock %}

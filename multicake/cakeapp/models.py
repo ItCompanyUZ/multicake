@@ -15,7 +15,13 @@ class Banner(models.Model):
         verbose_name_plural = 'Bannerlar'
 
 
+class Logo(models.Model):
+    image = models.ImageField(_('Rasm'), upload_to='Logo')
 
+
+    class Meta:
+        verbose_name = 'Logo'
+        verbose_name_plural = 'Logo'
 
 
 

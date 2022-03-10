@@ -38,3 +38,8 @@ class OrderAdmin(admin.ModelAdmin):
 class BannerAdmin(admin.ModelAdmin):
     list_display = ('image',)
 
+
+@admin.register(models.Logo)
+class LogoAdmin(admin.ModelAdmin):
+    list_display = ('image',)
+

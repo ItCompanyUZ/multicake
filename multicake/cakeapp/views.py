@@ -1,10 +1,12 @@
 from django.core.paginator import Paginator
 from django.shortcuts import render
+from django.views.generic import TemplateView
+
 from . import models
 from django.views import View, generic
 from django.http import JsonResponse
 
-from .models import Filling
+from .models import Filling, Portfolio, Cake, Logo
 
 
 class PublisherDetailView(generic.TemplateView):
@@ -16,31 +18,39 @@ class PublisherDetailView(generic.TemplateView):
 
 
         filling = Filling.objects.all()[::-1]
+        portfolio = Portfolio.objects.all()[::-1]
 
         filling_paginator = Paginator(filling, 3)
         page_number = self.request.GET.get('page')
 
+        portfolio_paginator = Paginator(portfolio, 3)
+        page_portfolio = self.request.GET.get('page')
+
 
         context = super().get_context_data(**kwargs)
         context['fillings'] = filling_paginator.get_page(page_number)
+        context['portfolio'] = portfolio_paginator.get_page(page_portfolio)
         context['cakes'] = models.CakeType.objects.all().order_by('-id')[:9]
-        context['portfolio'] = models.Portfolio.objects.all().order_by('-id')[:9]
         context['banner'] = models.Banner.objects.all().order_by('-id')
 
         return context
 
 
+def productcake(request, pk):
+    tort = Cake.objects.filter(caketype=pk)
+    paginator = Paginator(tort, 6)
+    page = request.GET.get('page')
+    cakeproduct = paginator.get_page(page)
+    return render(request, 'product.html', {'cakeproduct': cakeproduct})
 
 
+class HomePageView(TemplateView):
+    template_name = "base.html"
 
-
-
-
-
-
-
-
-
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['logo'] = Logo.objects.all()
+        return context
 
 
 

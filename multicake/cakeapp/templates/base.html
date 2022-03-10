@@ -1,5 +1,6 @@
-{% load static i18n %}
+
 <!DOCTYPE html>
+{% load static i18n %}
 <html lang="ru">
 
 <head>
@@ -29,7 +30,7 @@
     <div class="container-fluid">
       <nav class="navbar header__nav">
         <div class="header__logo">
-          <a class="header__logo logo" href="index.html"><img src="{% static 'img/header-logo/1.png' %}" alt="лого" class="logo-img" /></a>
+          <a class="header__logo logo" href="index.html"><img src="{{ logo.0.image.url }}" alt="лого" class="logo-img" /></a>
         </div>
         <div class="header__menu">
           <ul class="navbar-nav menu">

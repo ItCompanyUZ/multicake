@@ -3,8 +3,7 @@ from django.shortcuts import render
 from django.views.generic import TemplateView
 
 from . import models
-from django.views import View, generic
-from django.http import JsonResponse
+from django.views import generic
 
 from .models import Filling, Portfolio, Cake, Logo
 
@@ -42,6 +41,21 @@ def productcake(request, pk):
     page = request.GET.get('page')
     cakeproduct = paginator.get_page(page)
     return render(request, 'product.html', {'cakeproduct': cakeproduct})
+
+
+class ProductListView(generic.DetailView):
+    template_name = 'product.html'
+    model = Cake
+
+    def get_context_data(self, request, pk, **kwargs):
+        context = super().get_context_data(**kwargs)
+        print(pk)
+        return render(request, 'product.html')
+
+
+
+
+
 
 
 class HomePageView(TemplateView):

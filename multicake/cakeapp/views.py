@@ -8,7 +8,7 @@ from django.views import generic
 from .models import Filling, Portfolio, Cake, Logo, CakeType
 
 
-class PublisherDetailView(generic.TemplateView):
+class MainView(generic.TemplateView):
 
     template_name = 'index.html'
 
@@ -49,9 +49,12 @@ class ProductListView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['cakeproduct'] = Cake.objects.get(id = self.kwargs['pk'])
+        context['cakeproduct'] = Cake.objects.filter(type__id = self.kwargs['pk'])
         return context
 
+
+
+# get(id = self.kwargs['pk'])
 
 # class ProductListView(generic.DetailView):
 #     template_name = 'product.html'
@@ -64,7 +67,7 @@ class ProductListView(TemplateView):
 
 
 
-class InfoView(TemplateView):
+class DeliveryView(TemplateView):
     template_name = "delivery.html"
 
 
@@ -74,7 +77,7 @@ class HomePageView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['logo'] = Logo.objects.all()
+        context['logo'] = "nmaaa"
         return context
 
 

@@ -5,7 +5,7 @@ from django.views.generic import TemplateView
 from . import models
 from django.views import generic
 
-from .models import Filling, Portfolio, Cake, Logo
+from .models import Filling, Portfolio, Cake, Logo, CakeType
 
 
 class PublisherDetailView(generic.TemplateView):
@@ -35,26 +35,37 @@ class PublisherDetailView(generic.TemplateView):
         return context
 
 
-def productcake(request, pk):
-    tort = Cake.objects.filter(caketype=pk)
-    paginator = Paginator(tort, 6)
-    page = request.GET.get('page')
-    cakeproduct = paginator.get_page(page)
-    return render(request, 'product.html', {'cakeproduct': cakeproduct})
+# def productcake(request, id):
+#     tort = CakeType.objects.filter(cake=id)
+#     paginator = Paginator(tort, 6)
+#     page = request.GET.get('page')
+#     cakeproduct = paginator.get_page(page)
+#     return render(request, 'product.html', {'cakeproduct': cakeproduct})
 
 
-class ProductListView(generic.DetailView):
+class ProductListView(TemplateView):
+    paginate_by = 2
     template_name = 'product.html'
-    model = Cake
 
-    def get_context_data(self, request, pk, **kwargs):
+    def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        print(pk)
-        return render(request, 'product.html')
+        context['cakeproduct'] = Cake.objects.get(id = self.kwargs['pk'])
+        return context
+
+
+# class ProductListView(generic.DetailView):
+#     template_name = 'product.html'
+#     model = Cake
+#
+#     def get_context_data(self, request, pk, **kwargs):
+#         context = super().get_context_data(**kwargs)
+#         print(pk)
+#         return render(request, 'product.html')
 
 
 
-
+class InfoView(TemplateView):
+    template_name = "delivery.html"
 
 
 

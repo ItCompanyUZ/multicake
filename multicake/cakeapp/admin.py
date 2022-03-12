@@ -5,7 +5,7 @@ from . import models
 
 @admin.register(models.Cake)
 class CakeAdmin(TranslationAdmin):
-    list_display = ('id', 'name',)
+    list_display = ('id', 'name', 'type')
 
 
 @admin.register(models.CakeType)

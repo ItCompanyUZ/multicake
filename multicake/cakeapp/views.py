@@ -1,9 +1,11 @@
 from django.core.paginator import Paginator
 from django.shortcuts import render
+from django.conf import settings
 from django.views.generic import TemplateView
 
 from . import models
 from django.views import generic
+from django.http import JsonResponse
 
 from .models import Filling, Portfolio, Cake, Logo, CakeType
 
@@ -28,6 +30,8 @@ class MainView(generic.TemplateView):
 
         context = super().get_context_data(**kwargs)
         context['fillings'] = filling_paginator.get_page(page_number)
+        context['posts'] = Filling.objects.all().order_by('-id')[0:3]
+        context['total_obj'] = Filling.objects.count()
         context['portfolio'] = portfolio_paginator.get_page(page_portfolio)
         context['cakes'] = models.CakeType.objects.all().order_by('-id')[:9]
         context['banner'] = models.Banner.objects.all().order_by('-id')
@@ -50,9 +54,26 @@ class ProductListView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['cakeproduct'] = Cake.objects.filter(type__id = self.kwargs['pk'])
+        context['caketype'] = CakeType.objects.get(id=self.kwargs['pk'])
+        context['caketypes'] = CakeType.objects.all()
         return context
 
 
+
+
+
+def load_more(request):
+    offset = request.GET.get('offset')
+    offset_int = int(offset)
+    limit = 2
+    post_obj = list(Filling.objects.values().order_by('-id')[offset_int:offset_int+limit])
+    for post in post_obj:
+        post['image'] = settings.MEDIA_URL + str(post['image'])
+
+    data = {
+        'posts': post_obj
+    }
+    return JsonResponse(data=data)
 
 # get(id = self.kwargs['pk'])
 

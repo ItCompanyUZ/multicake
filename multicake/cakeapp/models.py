@@ -41,7 +41,7 @@ class CakeType(models.Model):
 class Cake(models.Model):
     name = models.CharField(_('Nomi'), max_length=100)  
     type = models.ForeignKey(CakeType, on_delete=models.CASCADE, verbose_name=_('Turi'))
-    price_for_kg = models.FloatField(_('1 kg narxi'))
+    price_for_kg = models.CharField(_('1 kg narxi'), max_length=200)
     min_amount_kg = models.PositiveIntegerField(_('Eng kam buyurtma miqdori (kg)'))
     image = models.ImageField(_('Rasm'), upload_to='To\'rtlar')
 

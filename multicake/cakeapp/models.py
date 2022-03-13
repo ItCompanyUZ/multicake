@@ -71,7 +71,7 @@ class Filling(models.Model):
 
     
 class Portfolio(models.Model):
-    image = models.ImageField(_('Rasm'), upload_to='Biznig ishlar')
+    image = models.ImageField(_('Rasm'), upload_to='Biznig-ishlar')
 
 
     class Meta:

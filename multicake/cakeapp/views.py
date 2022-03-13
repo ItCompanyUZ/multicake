@@ -1,5 +1,4 @@
 from django.core.paginator import Paginator
-from django.shortcuts import render
 from django.conf import settings
 from django.views.generic import TemplateView
 
@@ -7,7 +6,7 @@ from . import models
 from django.views import generic
 from django.http import JsonResponse
 
-from .models import Filling, Portfolio, Cake, Logo, CakeType
+from .models import Filling, Portfolio, Cake, CakeType
 
 
 class MainView(generic.TemplateView):
@@ -17,34 +16,15 @@ class MainView(generic.TemplateView):
 
     def get_context_data(self, **kwargs):
 
-
-        filling = Filling.objects.all()[::-1]
-        portfolio = Portfolio.objects.all()[::-1]
-
-        filling_paginator = Paginator(filling, 3)
-        page_number = self.request.GET.get('page')
-
-        portfolio_paginator = Paginator(portfolio, 3)
-        page_portfolio = self.request.GET.get('page')
-
-
         context = super().get_context_data(**kwargs)
-        context['fillings'] = filling_paginator.get_page(page_number)
-        context['posts'] = Filling.objects.all().order_by('-id')[0:3]
-        context['total_obj'] = Filling.objects.count()
-        context['portfolio'] = portfolio_paginator.get_page(page_portfolio)
+        context['fillings'] = Filling.objects.all().order_by('-id')[0:3]
+        context['portfolio'] = Portfolio.objects.all().order_by('-id')[0:6]
+        context['total_fillings'] = Filling.objects.count()
+        context['total_portfolio'] = Portfolio.objects.count()
         context['cakes'] = models.CakeType.objects.all().order_by('-id')[:9]
         context['banner'] = models.Banner.objects.all().order_by('-id')
 
         return context
-
-
-# def productcake(request, id):
-#     tort = CakeType.objects.filter(cake=id)
-#     paginator = Paginator(tort, 6)
-#     page = request.GET.get('page')
-#     cakeproduct = paginator.get_page(page)
-#     return render(request, 'product.html', {'cakeproduct': cakeproduct})
 
 
 class ProductListView(TemplateView):
@@ -63,28 +43,36 @@ class ProductListView(TemplateView):
 
 
 def load_more(request):
-    offset = request.GET.get('offset')
-    offset_int = int(offset)
-    limit = 2
-    post_obj = list(Filling.objects.values().order_by('-id')[offset_int:offset_int+limit])
-    for post in post_obj:
-        post['image'] = settings.MEDIA_URL + str(post['image'])
+    if request.GET.get('offset'):
+        offset = request.GET.get('offset')
+        offset_int = int(offset)
+        limit = 2
+        fillings = list(Filling.objects.values().order_by('-id')[offset_int:offset_int+limit])
 
-    data = {
-        'posts': post_obj
-    }
+        for filling in fillings:
+            filling['image'] = settings.MEDIA_URL + str(filling['image'])
+            print(filling['image'])
+
+        data = {
+            'fillings': fillings
+        }
+
+    else:
+        limit = 3
+        offsetPort = request.GET.get('offset-portfolio')
+        offsetPort_int = int(offsetPort)
+        portfolio = list(Portfolio.objects.values().order_by('-id')[offsetPort_int:offsetPort_int+limit])
+
+        for port in portfolio:
+            port['image'] = settings.MEDIA_URL + str(port['image'])
+            print(port['image'])
+
+        data = {
+            'portfolio': portfolio
+        }
+
+    
     return JsonResponse(data=data)
-
-# get(id = self.kwargs['pk'])
-
-# class ProductListView(generic.DetailView):
-#     template_name = 'product.html'
-#     model = Cake
-#
-#     def get_context_data(self, request, pk, **kwargs):
-#         context = super().get_context_data(**kwargs)
-#         print(pk)
-#         return render(request, 'product.html')
 
 
 
@@ -102,22 +90,6 @@ class HomePageView(TemplateView):
         return context
 
 
-
-
-
-# class JsonListView(View):
-#     def get(self, *args, **kwargs):
-#         print(kwargs)
-#         upper = kwargs.get('num_fillings')
-#         lower = upper-3
-#         size = len(models.Filling.objects.all())
-#         max_size = True if upper >= size else False
-#         print(upper)
-#         fillings = list(models.Filling.objects.values()[lower:upper])
-#         return JsonResponse({'data': fillings, 'max': max_size}, safe=False)
-
-def main(request):
-    return render(request, 'index.html')
 
 
 

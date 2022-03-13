@@ -151,14 +151,17 @@
 
 
   <script>
-    // var _current_item = $('.single_content').length
-    // console.log(_current_item);
-    const loadBtn = document.getElementById('btn');
-    const spinner = document.getElementById('spinner');
+    const loadBtn = document.getElementById('btn-filling');
+    const spinner = document.getElementById('spinner-filling');
     const total = JSON.parse(document.getElementById('json-total').textContent);
-    const alert = document.getElementById('alert');
+    const alert = document.getElementById('alert-filling');
+    
+    const loadBtnPort = document.getElementById('btn-portfolio');
+    const spinnerPort = document.getElementById('spinner-portfolio');
+    const totalPort = JSON.parse(document.getElementById('json-total-port').textContent);
+    const alertPort = document.getElementById('alert-portfolio');
 
-    function loadmorePost() {
+    function loadmoreFilling() {
         var _current_item = $('.single_content').length
         const content_container = document.getElementById("content");
         $.ajax({
@@ -169,12 +172,12 @@
             },
             beforeSend: function () {
                 loadBtn.classList.add('not-visible');
-                spinner.classList.remove('not-visible');
+                spinner.classList.remove('not-visible'); 
             },
             success: function (response) {
-                const data = response.posts
+                const data = response.fillings
                 spinner.classList.add('not-visible')
-                data.map((post, index) => {
+                data.map((filling, index) => {
 
                     if (index%2 == 0) {
                    
@@ -182,13 +185,13 @@
 
                                 <div class="single_content baked__right d-flex align-items-center justify-content-end">
                                   <div class="baked__info1">
-                                    <h4 class="baked__title text-uppercase fw-bold">${post.name}</h4>
+                                    <h4 class="baked__title text-uppercase fw-bold">${filling.name}</h4>
                                     <p class="baked-info">
-                                      Состав: ${post.composition}
+                                      Состав: ${filling.composition}
                                     </p>
                                   </div>
                                   <div class="baked__left-img">
-                                    <img src=${post.image} alt="" class="baked-img">
+                                    <img src=${filling.image} alt="" class="baked-img">
                                   </div>
                                 </div> `
                               }
@@ -197,12 +200,12 @@
                           content_container.innerHTML += `
                                 <div class="single_content baked__left d-flex align-items-center justify-content-start">
                                   <div class="baked__left-img">
-                                    <img src=${post.image} alt="" class="baked-img">
+                                    <img src=${filling.image} alt="" class="baked-img">
                                   </div>
                                   <div class="baked__info d-flex flex-column">
-                                    <h4 class="baked__title text-uppercase fw-bold">${post.name}</h4>
+                                    <h4 class="baked__title text-uppercase fw-bold">${filling.name}</h4>
                                     <p class="baked-info">
-                                      Состав: ${post.composition}
+                                      Состав: ${filling.composition}
                                     </p>
                                   </div>
                                 </div>` 
@@ -210,7 +213,7 @@
 
                 })
                 if (_current_item == total) {
-                    alert.classList.remove('not-visible');
+                    
                 } else {
                     loadBtn.classList.remove('not-visible');
                 }
@@ -220,8 +223,47 @@
             },
         });
     }
+
+
+    function loadmorePortfolio() {
+      var _current_portfolio_item = $('.single_content_portfolio').length
+      const content_container_portfolio = document.getElementById("port-content");
+      $.ajax({
+          url: '{% url "cakeapp:load" %}',
+          type: 'GET',
+          data: {
+              'offset-portfolio': _current_portfolio_item
+          },
+          beforeSend: function () {
+              loadBtnPort.classList.add('not-visible');
+              spinnerPort.classList.remove('not-visible');
+          },
+          success: function (response) {
+              const data = response.portfolio
+              console.log(data)
+              spinnerPort.classList.add('not-visible')
+              data.map((portfolio) => {                 
+                content_container_portfolio.innerHTML += `<img src=${portfolio.image}  alt="" class="single_content_portfolio work__content-img m-1" />`
+
+              })
+              if (_current_portfolio_item == totalPort) {
+                  
+              } else {
+                loadBtnPort.classList.remove('not-visible');
+              }
+          },
+          error: function (err) {
+              console.log(err);
+          },
+      });
+  }
+
     loadBtn.addEventListener('click', () => {
-        loadmorePost()
+        loadmoreFilling()
+    });
+
+    loadBtnPort.addEventListener('click', () => {
+      loadmorePortfolio()
     });
 </script>
 
@@ -236,20 +278,3 @@
 
 
 
-
-
-
-
-
-{% comment %} : content_container.innerHTML += `
-                                <div class="single_content baked__left d-flex align-items-center justify-content-start">
-                                  <div class="baked__left-img">
-                                    <img src=${post.image.url} alt="" class="baked-img">
-                                  </div>
-                                  <div class="baked__info d-flex flex-column">
-                                    <h4 class="baked__title text-uppercase fw-bold">${post.name}</h4>
-                                    <p class="baked-info">
-                                      Состав: ${post.composition}
-                                    </p>
-                                  </div>
-                                </div>` {% endcomment %}

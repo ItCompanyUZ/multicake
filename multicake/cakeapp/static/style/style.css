@@ -385,6 +385,22 @@ a:hover {
     display: none;
 }
 
+.load-button {
+    float: right;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 .tabs__content-info {
     left: 25px;

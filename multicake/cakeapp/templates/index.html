@@ -54,19 +54,19 @@
         <div class="container">
           <div class="content" id="content">
       
-              {% for post in posts %}
+              {% for filling in fillings %}
 
               {% if forloop.counter|divisibleby:2 %}
 
               <div class="single_content baked__right d-flex align-items-center justify-content-end">
                 <div class="baked__info1">
-                  <h4 class="baked__title text-uppercase fw-bold">{{ post.name }}</h4>
+                  <h4 class="baked__title text-uppercase fw-bold">{{ filling.name }}</h4>
                   <p class="baked-info">
-                    Состав: {{ post.composition }}
+                    Состав: {{ filling.composition }}
                   </p>
                 </div>
                 <div class="baked__left-img">
-                  <img src="{{ post.image.url }}" alt="" class="baked-img">
+                  <img src="{{ filling.image.url }}" alt="" class="baked-img">
                 </div>
               </div> 
 
@@ -74,12 +74,12 @@
 
             <div class="single_content baked__left d-flex align-items-center justify-content-start">
               <div class="baked__left-img">
-                <img src="{{ post.image.url }}" alt="" class="baked-img">
+                <img src="{{ filling.image.url }}" alt="" class="baked-img">
               </div>
               <div class="baked__info d-flex flex-column">
-                <h4 class="baked__title text-uppercase fw-bold">{{ post.name }}</h4>
+                <h4 class="baked__title text-uppercase fw-bold">{{ filling.name }}</h4>
                 <p class="baked-info">
-                  Состав: {{ post.composition }}
+                  Состав: {{ filling.composition }}
                 </p>
               </div>
             </div>
@@ -89,17 +89,17 @@
           {% endfor %}
 
           </div>
-          <div class="spinner-border text-primary mt-2 not-visible" role="status" id="spinner">
+          <div class="spinner-border text-primary mt-2 not-visible" role="status" id="spinner-filling">
               <span class="sr-only">Loading...</span>
           </div>
-          <div class="load-more__btn mt-3" id="btn">
-              <button type="button" class="btn btn-success">Load More Post</button>
+          <div class="load-more__btn mt-3" id="btn-filling">
+              <button type="button" class="load-button btn btn-success">Yana</button>
           </div>
-          <div class="alert alert-danger mt-2 not-visible" role="alert" id='alert'>
+          <div class="alert alert-danger mt-2 not-visible" role="alert" id='alert-filling'>
               No more post to load!!
           </div>
       </div>
-      {{total_obj|json_script:"json-total"}}
+      {{total_fillings|json_script:"json-total"}}
 
       </div>
 
@@ -141,37 +141,33 @@
              <!-- <img src="{% static 'img/our-work/2.png' %}" alt="" class="work__content-img" /> -->
 
 
-
-{% comment %} 
              <div class="container">
-              <h1>POSTS</h1>
-              <div class="content" id="content">
-                  {% for post in posts %}
-                  <div class="single_content border border-success mt-2 pl-2">
-                      <h3>{{post.title}}</h3>
-                      <p>{{post.desc}}</p>
-                  </div>
+              <div class="content" id="port-content">
+                  {% for port in portfolio %}
+                 
+                    <img src="{{ port.image.url }}" alt="" class="single_content_portfolio work__content-img m-1" />
+               
                   {% endfor %}
               </div>
-              <div class="spinner-border text-primary mt-2 not-visible" role="status" id="spinner">
+              <div class="spinner-border text-primary mt-2 not-visible" role="status" id="spinner-portfolio">
                   <span class="sr-only">Loading...</span>
               </div>
-              <div class="load-more__btn mt-3" id="btn">
-                  <button type="button" class="btn btn-success">Load More Post</button>
+              <div class="load-more__btn mt-3" id="btn-portfolio">
+                <button type="button" class="load-button btn btn-success">Yana</button>
               </div>
-              <div class="alert alert-danger mt-2 not-visible" role="alert" id='alert'>
+              <div class="alert alert-danger mt-2 not-visible" role="alert" id='alert-portfolio'>
                   No more post to load!!
               </div>
           </div>
-          {{total_obj|json_script:"json-total"}}
- {% endcomment %}
+          {{total_portfolio|json_script:"json-total-port"}}
+ 
 
 
              
 
 
 
-            {% for work in portfolio %}
+            {% comment %} {% for work in portfolio %}
 
             <div class=''> 
 
@@ -180,7 +176,7 @@
 
             </div>
 
-            {% endfor %}
+            {% endfor %} {% endcomment %}
        
 
           </section>

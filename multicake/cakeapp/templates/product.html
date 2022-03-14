@@ -32,8 +32,9 @@
             <div class="tabs__content d-flex flex-wrap justify-content-between">
                 <div class="tabs__content-block">
                     <div class="tabs__content-block-img">
-                        <a href="#" class="tabs__content-link">
+                        <a href="" class="tabs__content-link">
                             <img src="{{ cake.image.url }}" alt="" class="tabs__content-img">
+                            <a href="{% url 'cakeapp:product_list' cake.id %}" class="look">Zakazat<span class="look__border"></span></a>
                         </a>
                     </div>
                     <div class="tabs__content-article">

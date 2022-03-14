@@ -43,26 +43,26 @@
         <div class="header__menu">
           <ul class="navbar-nav menu">
             <li class="nav-item active">
-              <a class="menu__link" href="#cakes">Торты</a>
+              <a class="menu__link" href="#cakes">{% trans "To'rtlar" %}</a>
             </li>
             <li class="nav-item">
-              <a class="menu__link" href="#baked">Начинки</a>
+              <a class="menu__link" href="#baked">{% trans "Nachinka" %}</a>
             </li>
             <li class="nav-item">
-              <a class="menu__link" href="{% url 'cakeapp:delivery' %}">Доставка</a>
+              <a class="menu__link" href="{% url 'cakeapp:delivery' %}">{% trans "Yetkazib berish" %}</a>
             </li>
             <li class="nav-item">
-              <a class="menu__link" href="#portfolio">Наши работы</a>
+              <a class="menu__link" href="#portfolio">{% trans "Qilgan ishlarimiz" %}</a>
             </li>
             <li class="nav-item">
-              <a class="menu__link" href="#contact">Контакты</a>
+              <a class="menu__link" href="#contact">{% trans "Kantakt" %}</a>
             </li>
           </ul>
         </div>
         <div class="contacts d-flex align-items-center">
           <div class="contacts__desc">
             <a href="tel:+998881599990" class="contacts__phone">+998 (88) 159-99-90</a>
-            <p class="contacts__info">график работы с 10:00 до 20:00</p>
+            <p class="contacts__info">{% trans "Ish vaxtimiz 10:00 dan 20:00 gacha" %}</p>
           </div>
           <div class="contacts__link">
             <a href="https://www.instagram.com/multi_cake1/?igshid=1dfozn5vmm8uz" class="contacts__link-social">
@@ -96,15 +96,15 @@
     <div class="container">
       <div class="footer__content d-flex justify-content-between">
         <div class="footer__content-info footer__content-info-dist">
-          <p class="footer__content-title">Навигация</p>
+          <p class="footer__content-title">{% trans "Harakatlanish" %}</p>
           <ul class="footer__content-nav p-0 m-0">
-            <li><a href="#cakes" class="footer__content-link footer__content-link-dist">Торты</a></li>
+            <li><a href="#cakes" class="footer__content-link footer__content-link-dist">{% trans "To'rtlar" %}</a></li>
             <li>
-              <a href="baked.html" class="footer__content-link footer__content-link-dist">Начинки</a>
+              <a href="baked.html" class="footer__content-link footer__content-link-dist"></a>
             </li>
-            <li><a href="delivery.html" class="footer__content-link footer__content-link-dist">Доставка</a></li>
-            <li><a href="work.html" class="footer__content-link footer__content-link-dist">Наши работы</a></li>
-            <li><a href="contact.html" class="footer__content-link footer__content-link-dist">Контакты</a></li>
+            <li><a href="delivery.html" class="footer__content-link footer__content-link-dist">{% trans "Yetkazib berish" %}</a></li>
+            <li><a href="work.html" class="footer__content-link footer__content-link-dist">{% trans "Qilgan ishlarimiz" %}</a></li>
+            <li><a href="contact.html" class="footer__content-link footer__content-link-dist">{% trans "Kantakt" %}</a></li>
           </ul>
         </div>
         <div class="footer__content-info">

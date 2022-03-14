@@ -18,16 +18,16 @@
 
     <section class="product" id='cakes'>
       <div class="container">
-        <h2 class="product__title title">наша продукция</h2>
+        <h2 class="product__title title">{% trans "Maxsulotlarimiz" %}</h2>
 
        
         <div class="tabs__content d-flex flex-wrap justify-content-between">
           {% for cake in cakes %}
           <div class="tabs__content-block">
             <div class="tabs__content-block-img position-relative">
-              <a href="product.html" class="tabs__content-link">
+              <a href="{% url 'cakeapp:product_list' cake.id %}" class="tabs__content-link">
                 <img src="{{ cake.image.url }}" alt="" class="tabs__content-img" />
-                <a href="{% url 'cakeapp:product_list' cake.id %}" class="look">Смотреть больше <span class="look__border"></span></a>
+                <a href="{% url 'cakeapp:product_list' cake.id %}" class="look">{% trans "Batavsil" %} <span class="look__border"></span></a>
               </a>
             </div>
             <div class="tabs__content-article">
@@ -49,7 +49,7 @@
 
     <section class="baked" id="baked">
       <div class="container">
-        <h2 class="product__title title">Выпечка любой сложности на заказ</h2>
+        <h2 class="product__title title">{% trans "Выпечка любой сложности на заказ" %}</h2>
 
         <div class="container">
           <div class="content" id="content">
@@ -93,10 +93,10 @@
               <span class="sr-only">Loading...</span>
           </div>
           <div class="load-more__btn mt-3" id="btn-filling">
-              <button type="button" class="load-button btn btn-success">Yana</button>
+              <button type="button" class="load-button btn btn-success">{% trans "Yana" %}</button>
           </div>
           <div class="alert alert-danger mt-2 not-visible" role="alert" id='alert-filling'>
-              No more post to load!!
+              {% trans "Boshqa qolmadi" %}
           </div>
       </div>
       {{total_fillings|json_script:"json-total"}}
@@ -109,19 +109,19 @@
 
     <section class="delivery">
       <div class="container">
-        <h2 class="delivery__title title">доставка</h2>
+        <h2 class="delivery__title title">{% trans "Yetkazib berish" %}</h2>
         <div class="delivery__info d-flex flex-wrap justify-content-around">
           <div class="delivery__info-content d-flex flex-column align-items-center">
             <img src="{% static "img/delivery/1.jpg" %}" alt="" class="delivery__info-img " />
-            <h3 class="delivery__info-title">своевременная доставка</h3>
+            <h3 class="delivery__info-title">{% trans "O'z vaqtida yetkazib berish" %}</h3>
           </div>
           <div class="delivery__info-content d-flex flex-column align-items-center">
             <img src="{% static "img/delivery/2.jpg" %}" alt="" class="delivery__info-img " />
-            <h3 class="delivery__info-title">самовывоз</h3>
+            <h3 class="delivery__info-title">{% trans "Olib ketish" %}</h3>
           </div>
           <div class="delivery__info-content d-flex flex-column align-items-center">
             <img src="{% static "img/delivery/3.jpg" %}" alt="" class="delivery__info-img " />
-            <h3 class="delivery__info-title">доставка курьером</h3>
+            <h3 class="delivery__info-title">{% trans "KURYER ORQALI YETKAZISH" %}</h3>
           </div>
         </div>
       </div>
@@ -134,7 +134,7 @@
 
     <section class="work" id='portfolio'>
       <div class="container">
-        <h2 class="work__title delivery__title title align-items-center">наши работы</h2>
+        <h2 class="work__title delivery__title title align-items-center">{% trans "Qilgan ishlarimiz" %}</h2>
         <!-- <img src="{% static 'img/our-work/1.png' %}" alt="наши работы" class="work__img" /> -->
         <div class="work__content">
           <section class="main_content d-flex flex-wrap justify-content-between">
@@ -153,10 +153,10 @@
                   <span class="sr-only">Loading...</span>
               </div>
               <div class="load-more__btn mt-3" id="btn-portfolio">
-                <button type="button" class="load-button btn btn-success">Yana</button>
+                <button type="button" class="load-button btn btn-success">{% trans "Yana" %}</button>
               </div>
               <div class="alert alert-danger mt-2 not-visible" role="alert" id='alert-portfolio'>
-                  No more post to load!!
+                  {% trans "Boshqa qolmadi" %}
               </div>
           </div>
           {{total_portfolio|json_script:"json-total-port"}}
@@ -201,23 +201,23 @@
           tabindex="0">
         </iframe>
         <div class="contact__content-info">
-          <h2 class="contact__title title">График работы</h2>
+          <h2 class="contact__title title">{% trans "ISH GRAFIKIMIZ" %}</h2>
           <div class="contact__content-block">
             <p class="contact__content-desc">
-              Режим работы:
-              <span class="contact__content-desc-size">с 10:00 до 20:00</span>
+              {% trans "Ish vaxtimiz" %}
+              <span class="contact__content-desc-size">{% trans "10:00 dan 20:00 gacha" %}</span>
             </p>
             <p class="contact__content-desc">
-              Контакты:
+              {% trans "Kantakt " %}:
               <a href="+998881599990" class="contact__content-desc-size contact__content-desc-color">+998 (88)
                 159-99-90</a>
             </p>
             <p class="contact__content-desc">
               Адрес:
-              <span class="contact__content-desc-size">Yunusobod tumani katta xasanboy 4 tor ko'chasi 60-uy</span>
+              <span class="contact__content-desc-size">{% trans "Yunusobod tumani katta xasanboy 4 tor ko'chasi 60-uy" %}</span>
             </p>
             <div class="contact__social">
-              <p class="contact__content-social">Социальные сети</p>
+              <p class="contact__content-social">{% trans "Satsial a'loqa " %}</p>
               <a href="https://www.instagram.com/multi_cake1/?igshid=1dfozn5vmm8uz"
                 class="contact__content-social-link">
                 <img src="{% static 'img/contact-social/instagram-con.svg' %}" alt="instagram" class="contact__content-social-img" />

@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+{% load static i18n %}
+{% block content %}
+
+
+{{ cake.name }}
+
+<main class="main" id="main">
+    <section class="order">
+        <div class="container">
+            <div class="order__info">
+                <div class="order__content d-flex flex-wrap justify-content-center">
+                    <div class="order__content-img col-xl-5">
+                        <img src="{{ cake.image.url }}" alt="" class="order__img w-100">
+                        <div class="order__content-img-info">
+                            <p class="order__content-img-title">Цена: <span class="order__content-img-size">{{ cake.price_for_kg }}
+                                    сум за 1 кг</span></p>
+                            <p class="order__content-img-desc">*минимальный заказ {{ cake.min_amount_kg }} кг</p>
+                        </div>
+                    </div>
+                    <div class="order__content-info col-xl-5">
+                        <h3 class="order__content-info-title"></h3>
+                        <form action="" class="order-form" method="POST">
+                            {% csrf_token %}
+                            <input class="order-photo" type="name" name="Фото" value="" hidden>
+                            <div class="order__content-zav">
+                                <label for="date" class="order__content-info-subtitle">Введите дату когда нужен
+                                    торт</label>
+                                <input type="text" id="date" class="order-info order__content-info-bt"
+                                    placeholder="01.02.2021" name='Дата' required>
+                            </div>
+                            <div class="order__content-zav">
+                                <label for="number" class="order__content-info-subtitle">Укажите свой
+                                    телефон</label>
+                                <input type="number" id="number" class="order-info order__content-info-bt"
+                                    placeholder="+998 90 125 70 07" name='Телефон' required>
+                            </div>
+                            <div class="order__content-zav">
+                                <label for="how_many_kg" class="order__content-info-subtitle">Колличество
+                                    килограмм</label>
+                                <input type="text" id="how_many_kg" class="order-info order__content-info-bt" placeholder="1-12"
+                                name='Вес'required>
+                            </div>
+                            <div class="order__content-zav">
+                                <label for="filling" class="order__content-info-subtitle">Выберите начинку</label>
+                                <select id="filling" class="order-info order__content-info-bt order__content-info-size" name='Начинка'>
+                                    {% for filling in fillings %}
+                                    <option value="Шоколадный">{{ filling.name }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            <div class="order__content-zav">
+                                <label for="writing" class="order__content-info-subtitle">Надпись на торте</label>
+                                <input type="text" id="writing" class="order-info order__content-info-bt"
+                                    placeholder="Введите надпись" name='Надпись' required>
+                            </div>
+                            
+                            <div class="order__content-zav">
+                                <label for="order-6" class="order__content-info-subtitle">Выберите способ доставки</label>
+                                <select id="order-6" class="order-info order__content-info-bt order__content-info-size" name='способ доставки'>
+                                    <option value="Самовывоз">{% trans "Самовывоз" %}</option>
+                                    <option value="Доставка">{% trans "Доставка" %}</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="contact__information-phone-link order__btn ">Заказать</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+
+
+
+
+{% endblock %}
+
+

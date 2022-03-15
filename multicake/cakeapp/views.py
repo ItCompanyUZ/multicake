@@ -1,7 +1,8 @@
-from django.core.paginator import Paginator
+from django.shortcuts import redirect
+from django.contrib import messages
 from django.conf import settings
 from django.views.generic import TemplateView
-
+from . import forms
 from . import models
 from django.views import generic
 from django.http import JsonResponse
@@ -39,6 +40,35 @@ class ProductListView(TemplateView):
         return context
 
 
+class ProductDetailView(generic.DetailView):
+    template_name = 'product_detail.html'
+    model = Cake
+    form_class = forms.OrderForm
+
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['cake'] = Cake.objects.get(id = self.kwargs['pk'])
+        context['fillings'] = Filling.objects.all()
+
+
+        form = forms.OrderForm(self.request.POST or None) 
+
+        context["form"] = form
+
+        return context
+
+
+    def post(self, request, *args, **kwargs):
+        context = self.get_context_data()
+        if context["form"].is_valid():
+            context["form"].save()
+        
+            return redirect('')
+
+
+        return super(TemplateView, self).render_to_response(context)
+    
 
 
 
@@ -78,6 +108,7 @@ def load_more(request):
 
 class DeliveryView(TemplateView):
     template_name = "delivery.html"
+
 
 
 

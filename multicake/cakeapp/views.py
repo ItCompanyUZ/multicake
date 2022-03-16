@@ -1,4 +1,4 @@
-from django.shortcuts import redirect
+from django.shortcuts import redirect, render
 from django.contrib import messages
 from django.conf import settings
 from django.views.generic import TemplateView
@@ -7,6 +7,7 @@ from . import models
 from django.views import generic
 from django.http import JsonResponse
 
+from .forms import OrderForm
 from .models import Filling, Portfolio, Cake, CakeType
 
 
@@ -52,7 +53,16 @@ class ProductDetailView(generic.DetailView):
         context['fillings'] = Filling.objects.all()
 
 
-        form = forms.OrderForm(self.request.POST or None) 
+    # def contact(request):
+    #     if request.method == "POST":
+    #         form = OrderForm(request.POST)
+    #         if form.is_valid():
+    #             form.save()
+    #             return redirect('/')
+    #     else:
+    #         form = OrderForm()
+    #     return render(request, 'product_detail.html', {'form': form})
+        form = forms.OrderForm(self.request.POST or None)
 
         context["form"] = form
 
@@ -63,7 +73,7 @@ class ProductDetailView(generic.DetailView):
         context = self.get_context_data()
         if context["form"].is_valid():
             context["form"].save()
-        
+
             return redirect('')
 
 

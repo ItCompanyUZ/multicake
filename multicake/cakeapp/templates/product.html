@@ -46,6 +46,88 @@
             {% endfor %}
         </div>
 
+        <div class="pagination">
+    <span class="step-links">
+        {% if cakeproduct.has_previous %}
+            <a href="?page=1">&laquo; first</a>
+            <a href="?page={{ cakeproduct.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ cakeproduct.number }} of {{ cakeproduct.paginator.num_pages }}.
+        </span>
+
+        {% if cakeproduct.has_next %}
+            <a href="?page={{ cakeproduct.next_page_number }}">next</a>
+            <a href="?page={{ cakeproduct.paginator.num_pages }}">last &raquo;</a>
+        {% endif %}
+    </span>
+</div>
+
+<!--        <div class="pagination">-->
+<!--<span class="pagination-link block flex  space-x-2 md:space-x-3 justify-center my-3 items-center">-->
+<!--    {% if page_obj.has_previous %}-->
+<!--        <a class="arrow__2__l flex items-center justify-center arrow__number__style" href="?page=1">-->
+<!--          <svg width="14" height="15" viewBox="0 0 14 15" fill="none" xmlns="http://www.w3.org/2000/svg">-->
+<!--            <path fill-rule="evenodd" clip-rule="evenodd" d="M8.14314 14.6054C8.64784 14.0815 8.64784 13.2352 8.14314 12.7113L3.12198 7.49915L8.14314 2.28702C8.64784 1.76312 8.64784 0.916823 8.14314 0.392924C7.63843 -0.130976 6.82314 -0.130976 6.31844 0.392924L0.378456 6.55882C-0.126248 7.08272 -0.126248 7.92902 0.378456 8.45292L6.31844 14.6188C6.8102 15.1293 7.63843 15.1293 8.14314 14.6054Z" fill="#545454"/>-->
+<!--            <path fill-rule="evenodd" clip-rule="evenodd" d="M13.6755 13.5123C14.1082 13.069 14.1082 12.3529 13.6755 11.9096L9.3717 7.49935L13.6755 3.08909C14.1082 2.64579 14.1082 1.92969 13.6755 1.48639C13.2429 1.04309 12.5441 1.04309 12.1115 1.48639L7.0201 6.70368C6.5875 7.14698 6.5875 7.86308 7.0201 8.30638L12.1115 13.5237C12.533 13.9556 13.2429 13.9556 13.6755 13.5123Z" fill="#545454" fill-opacity="0.5"/>-->
+<!--          </svg>-->
+<!--        </a>-->
+<!--        <a class="arrow__1__l arrow__number__style  flex items-center justify-center" href="?page={{ page_obj.previous_page_number }}">-->
+<!--          <svg width="8" height="15" viewBox="0 0 8 15" fill="none" xmlns="http://www.w3.org/2000/svg">-->
+<!--            <path fill-rule="evenodd" clip-rule="evenodd" d="M7.64489 14.6054C8.1187 14.0815 8.1187 13.2352 7.64489 12.7113L2.93115 7.49915L7.64489 2.28702C8.1187 1.76312 8.1187 0.916823 7.64489 0.392924C7.17109 -0.130976 6.40571 -0.130976 5.93191 0.392924L0.355597 6.55882C-0.118207 7.08272 -0.118207 7.92902 0.355597 8.45292L5.93191 14.6188C6.39356 15.1293 7.17109 15.1293 7.64489 14.6054Z" fill="#545454"/>-->
+<!--          </svg>-->
+<!--        </a>-->
+<!--    {% else %}-->
+<!--        <a class="arrow__2__l flex items-center justify-center arrow__number__style" >-->
+<!--          <svg width="14" height="15" viewBox="0 0 14 15" fill="none" xmlns="http://www.w3.org/2000/svg">-->
+<!--            <path fill-rule="evenodd" clip-rule="evenodd" d="M8.14314 14.6054C8.64784 14.0815 8.64784 13.2352 8.14314 12.7113L3.12198 7.49915L8.14314 2.28702C8.64784 1.76312 8.64784 0.916823 8.14314 0.392924C7.63843 -0.130976 6.82314 -0.130976 6.31844 0.392924L0.378456 6.55882C-0.126248 7.08272 -0.126248 7.92902 0.378456 8.45292L6.31844 14.6188C6.8102 15.1293 7.63843 15.1293 8.14314 14.6054Z" fill="#545454"/>-->
+<!--            <path fill-rule="evenodd" clip-rule="evenodd" d="M13.6755 13.5123C14.1082 13.069 14.1082 12.3529 13.6755 11.9096L9.3717 7.49935L13.6755 3.08909C14.1082 2.64579 14.1082 1.92969 13.6755 1.48639C13.2429 1.04309 12.5441 1.04309 12.1115 1.48639L7.0201 6.70368C6.5875 7.14698 6.5875 7.86308 7.0201 8.30638L12.1115 13.5237C12.533 13.9556 13.2429 13.9556 13.6755 13.5123Z" fill="#545454" fill-opacity="0.5"/>-->
+<!--          </svg>-->
+<!--        </a>-->
+<!--        <a class="arrow__1__l arrow__number__style  flex items-center justify-center" >-->
+<!--          <svg width="8" height="15" viewBox="0 0 8 15" fill="none" xmlns="http://www.w3.org/2000/svg">-->
+<!--            <path fill-rule="evenodd" clip-rule="evenodd" d="M7.64489 14.6054C8.1187 14.0815 8.1187 13.2352 7.64489 12.7113L2.93115 7.49915L7.64489 2.28702C8.1187 1.76312 8.1187 0.916823 7.64489 0.392924C7.17109 -0.130976 6.40571 -0.130976 5.93191 0.392924L0.355597 6.55882C-0.118207 7.08272 -0.118207 7.92902 0.355597 8.45292L5.93191 14.6188C6.39356 15.1293 7.17109 15.1293 7.64489 14.6054Z" fill="#545454"/>-->
+<!--          </svg>-->
+<!--        </a>-->
+<!--    {% endif %}-->
+
+<!--    {% for page in page_obj.paginator.page_range %}-->
+
+<!--    {% if page_obj.number == forloop.counter %}-->
+<!--        <a class="arrow__number__style bir1 arrow__active font-semibold    flex items-center justify-center" >{{ forloop.counter }}</a>-->
+<!--    {% else %}-->
+<!--        <a class="arrow__number__style bir1  font-semibold    flex items-center justify-center" href="?page={{ forloop.counter }}">{{ forloop.counter }}</a>-->
+<!--    {% endif %}-->
+
+<!--    {% endfor %}-->
+<!--    {% if page_obj.has_next %}-->
+<!--        <a class="arrow__number__style arrow__1__r  flex items-center justify-center" href="?page={{ page_obj.next_page_number }}">-->
+<!--            <svg width="8" height="15" viewBox="0 0 8 15" fill="none" xmlns="http://www.w3.org/2000/svg">-->
+<!--              <path fill-rule="evenodd" clip-rule="evenodd" d="M0.355353 0.39462C-0.118451 0.91852 -0.118451 1.76482 0.355353 2.28872L5.0691 7.50085L0.355353 12.713C-0.118451 13.2369 -0.118451 14.0832 0.355353 14.6071C0.829157 15.131 1.59453 15.131 2.06834 14.6071L7.64465 8.44118C8.11845 7.91728 8.11845 7.07098 7.64465 6.54708L2.06834 0.381187C1.60668 -0.12928 0.829157 -0.129279 0.355353 0.39462Z" fill="#545454"/>-->
+<!--            </svg>-->
+<!--        </a>-->
+<!--        <a class="arrow__2__r arrow__number__style  flex items-center justify-center" href="?page={{ page_obj.paginator.num_pages }}">-->
+<!--          <svg width="14" height="15" viewBox="0 0 14 15" fill="none" xmlns="http://www.w3.org/2000/svg">-->
+<!--            <path fill-rule="evenodd" clip-rule="evenodd" d="M5.85686 0.39462C5.35216 0.91852 5.35216 1.76482 5.85686 2.28872L10.878 7.50085L5.85686 12.713C5.35216 13.2369 5.35216 14.0832 5.85686 14.6071C6.36157 15.131 7.17686 15.131 7.68156 14.6071L13.6215 8.44118C14.1262 7.91728 14.1262 7.07098 13.6215 6.54708L7.68156 0.381187C7.1898 -0.12928 6.36157 -0.129279 5.85686 0.39462Z" fill="#545454"/>-->
+<!--            <path fill-rule="evenodd" clip-rule="evenodd" d="M0.324453 1.48769C-0.108151 1.93099 -0.108151 2.64709 0.324453 3.09039L4.6283 7.50065L0.324453 11.9109C-0.108151 12.3542 -0.108151 13.0703 0.324453 13.5136C0.757057 13.9569 1.45588 13.9569 1.88848 13.5136L6.9799 8.29632C7.4125 7.85302 7.4125 7.13692 6.9799 6.69362L1.88848 1.47632C1.46697 1.04439 0.757057 1.04439 0.324453 1.48769Z" fill="#545454" fill-opacity="0.5"/>-->
+<!--            </svg>-->
+<!--        </a>-->
+<!--    {% else %}-->
+<!--        <a class="arrow__number__style arrow__1__r  flex items-center justify-center" >-->
+<!--            <svg width="8" height="15" viewBox="0 0 8 15" fill="none" xmlns="http://www.w3.org/2000/svg">-->
+<!--              <path fill-rule="evenodd" clip-rule="evenodd" d="M0.355353 0.39462C-0.118451 0.91852 -0.118451 1.76482 0.355353 2.28872L5.0691 7.50085L0.355353 12.713C-0.118451 13.2369 -0.118451 14.0832 0.355353 14.6071C0.829157 15.131 1.59453 15.131 2.06834 14.6071L7.64465 8.44118C8.11845 7.91728 8.11845 7.07098 7.64465 6.54708L2.06834 0.381187C1.60668 -0.12928 0.829157 -0.129279 0.355353 0.39462Z" fill="#545454"/>-->
+<!--            </svg>-->
+<!--        </a>-->
+<!--        <a class="arrow__2__r arrow__number__style  flex items-center justify-center" >-->
+<!--          <svg width="14" height="15" viewBox="0 0 14 15" fill="none" xmlns="http://www.w3.org/2000/svg">-->
+<!--            <path fill-rule="evenodd" clip-rule="evenodd" d="M5.85686 0.39462C5.35216 0.91852 5.35216 1.76482 5.85686 2.28872L10.878 7.50085L5.85686 12.713C5.35216 13.2369 5.35216 14.0832 5.85686 14.6071C6.36157 15.131 7.17686 15.131 7.68156 14.6071L13.6215 8.44118C14.1262 7.91728 14.1262 7.07098 13.6215 6.54708L7.68156 0.381187C7.1898 -0.12928 6.36157 -0.129279 5.85686 0.39462Z" fill="#545454"/>-->
+<!--            <path fill-rule="evenodd" clip-rule="evenodd" d="M0.324453 1.48769C-0.108151 1.93099 -0.108151 2.64709 0.324453 3.09039L4.6283 7.50065L0.324453 11.9109C-0.108151 12.3542 -0.108151 13.0703 0.324453 13.5136C0.757057 13.9569 1.45588 13.9569 1.88848 13.5136L6.9799 8.29632C7.4125 7.85302 7.4125 7.13692 6.9799 6.69362L1.88848 1.47632C1.46697 1.04439 0.757057 1.04439 0.324453 1.48769Z" fill="#545454" fill-opacity="0.5"/>-->
+<!--            </svg>-->
+<!--        </a>-->
+<!--    {% endif %}-->
+<!--</span>-->
+<!--</div>-->
 
     </div>
 </section>

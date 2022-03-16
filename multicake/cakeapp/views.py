@@ -1,4 +1,5 @@
-from msilib.schema import Error
+from django.core.paginator import Paginator
+from django.views.generic import ListView
 from multiprocessing import context
 from django.shortcuts import redirect, render
 from django.conf import settings
@@ -7,6 +8,8 @@ from . import forms
 from . import models
 from django.views import generic
 from django.http import JsonResponse
+
+from .forms import OrderForm
 from .models import Filling, Portfolio, Cake, CakeType
 
 
@@ -30,14 +33,21 @@ class MainView(generic.TemplateView):
 
 
 class ProductListView(TemplateView):
-    paginate_by = 2
     template_name = 'product.html'
 
     def get_context_data(self, **kwargs):
+        product = Cake.objects.all()[::-1]
+
+        product_paginator = Paginator(product, 2)
+        page_number = self.request.GET.get('page')
+
         context = super().get_context_data(**kwargs)
+
         context['cakeproduct'] = Cake.objects.filter(type__id = self.kwargs['pk'])
+        context['cakeproduct'] = product_paginator.get_page(page_number)
         context['caketype'] = CakeType.objects.get(id=self.kwargs['pk'])
         context['caketypes'] = CakeType.objects.all()
+
         return context
 
 
@@ -66,12 +76,15 @@ class ProductDetailView(generic.DetailView):
 
         if context["form"].is_valid():
             print("Succcessss")
-            context["form"].save()  
+            context["form"].save()
 
-            return redirect('message')
+            return redirect('/')
+        else:
+            form = OrderForm()
+            return render(request, 'product_detail.html', {'form': form})
 
 
-        raise Error
+
     
 
 

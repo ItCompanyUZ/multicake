@@ -82,6 +82,37 @@ a:hover {
     font-weight: 700;
 }
 
+.header__lang {
+  border: 2px solid #f08080;
+  /* background-color: #00489d; */
+  background-color: lightseagreen;
+  color: lightseagreen;
+  padding: 1px 6px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.header__lang--active,
+.header__lang:hover {
+  background: #e9967a;
+  color: lightseagreen;
+}
+
+
+
+
+.header__rus {
+  border: 2px solid #00489d;
+  background-color: white;
+  color: #00489d;
+  padding: 1px 6px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+
+
 .menu__link-active:hover {
     color: var(--pink);
 }

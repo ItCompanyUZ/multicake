@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import MainView, ProductListView, DeliveryView, load_more, ProductDetailView
+from .views import MainView, ProductListView, DeliveryView, load_more, ProductDetailView, AddBookView
 
 app_name = 'cakeapp'
 

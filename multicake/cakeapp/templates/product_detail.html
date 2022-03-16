@@ -22,7 +22,7 @@
                         <h3 class="order__content-info-title"></h3>
                         <form action="" class="order-form" method="POST">
                             {% csrf_token %}
-                            <input class="order-photo" type="name" name="Фото" value="" hidden>
+                            <input class="order-photo" type="name" name="cake" value="{{ cake.id }}" >
                             <div class="order__content-zav">
                                 <label for="date" class="order__content-info-subtitle">Введите дату когда нужен
                                     торт</label>
@@ -32,7 +32,7 @@
                             <div class="order__content-zav">
                                 <label for="number" class="order__content-info-subtitle">Укажите свой
                                     телефон</label>
-                                <input type="number" id="number" class="order-info order__content-info-bt"
+                                <input type="text" id="number" class="order-info order__content-info-bt"
                                     placeholder="+998 90 125 70 07" name='number' required>
                             </div>
                             <div class="order__content-zav">
@@ -45,7 +45,7 @@
                                 <label for="filling" class="order__content-info-subtitle">Выберите начинку</label>
                                 <select id="filling" class="order-info order__content-info-bt order__content-info-size" name='filling'>
                                     {% for filling in fillings %}
-                                    <option value="Шоколадный">{{ filling.name }}</option>
+                                    <option value="{{ filling.id }}">{{ filling }}</option>
                                     {% endfor %}
                                 </select>
                             </div>
@@ -58,8 +58,8 @@
                             <div class="order__content-zav">
                                 <label for="type_of_delivery" class="order__content-info-subtitle">Выберите способ доставки</label>
                                 <select id="type_of_delivery" class="order-info order__content-info-bt order__content-info-size" name='type_of_delivery'>
-                                    <option value="Самовывоз">{% trans "Самовывоз" %}</option>
-                                    <option value="Доставка">{% trans "Доставка" %}</option>
+                                    <option value="1">{% trans "Самовывоз" %}</option>
+                                    <option value="2">{% trans "Доставка" %}</option>
                                 </select>
                             </div>
                             <button type="submit" class="contact__information-phone-link order__btn ">Заказать</button>

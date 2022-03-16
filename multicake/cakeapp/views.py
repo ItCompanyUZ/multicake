@@ -36,14 +36,10 @@ class ProductListView(TemplateView):
     template_name = 'product.html'
 
     def get_context_data(self, **kwargs):
-        product = Cake.objects.all()[::-1]
-
+        product = Cake.objects.filter(type__id = self.kwargs['pk'])[::-1]
         product_paginator = Paginator(product, 2)
         page_number = self.request.GET.get('page')
-
         context = super().get_context_data(**kwargs)
-
-        context['cakeproduct'] = Cake.objects.filter(type__id = self.kwargs['pk'])
         context['cakeproduct'] = product_paginator.get_page(page_number)
         context['caketype'] = CakeType.objects.get(id=self.kwargs['pk'])
         context['caketypes'] = CakeType.objects.all()
@@ -60,6 +56,7 @@ class ProductDetailView(generic.DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['cake'] = Cake.objects.get(id = self.kwargs['pk'])
+        context['caketype_id'] = context['cake'].type.id
         context['fillings'] = Filling.objects.all()
         form = forms.OrderForm(self.request.POST or None)
 

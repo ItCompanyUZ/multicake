@@ -1,10 +1,114 @@
-{% extends 'base.html' %}
+
+<!DOCTYPE html>
 {% load static i18n %}
-{% block content %}
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="index, follow, noodp">
+  <meta name="googlebot" content="index, follow">
+  <meta name="google" content="notranslate">
+  <title>
+    Торты на заказ в Ташкенте | Цены и фото | Большой каталог товаров
+  </title>
+  <link rel="stylesheet" href="{% static 'style/all.min.css' %}">
+  <link rel="stylesheet" href="{% static 'style/bootstrap.min.css' %}">
+  <link rel="stylesheet" href="{% static 'style/style.css' %}">
+  <link rel="stylesheet" href="{% static 'style/media.css' %}">
 
 
-{{ cake.name }}
+  <script src="https://cdn.jsdelivr.net/gh/cferdinandi/smooth-scroll/dist/smooth-scroll.polyfills.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js" ></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Counter-Up/1.0.0/jquery.counterup.min.js"></script>
 
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+        crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+  <header class="header" id="header">
+    <div class="container-fluid">
+      <nav class="navbar header__nav">
+        <div class="header__logo">
+          <a class="header__logo logo" href="/"><img src="{{ logo.image.url }}" alt="лого" class="logo-img" /></a>
+        </div>
+        <div class="header__menu">
+          <ul class="navbar-nav menu">
+            <li class="nav-item active">
+              <a class="menu__link" href="{% url 'cakeapp:product_list' caketype_id %}">{% trans "To'rtlar" %}</a>
+            </li>
+            <li class="nav-item">
+              <a class="menu__link" href="#baked">{% trans "Nachinka" %}</a>
+            </li>
+            <li class="nav-item">
+              <a class="menu__link" href="{% url 'cakeapp:delivery' %}">{% trans "Yetkazib berish" %}</a>
+            </li>
+            <li class="nav-item">
+              <a class="menu__link" href="#portfolio">{% trans "Qilgan ishlarimiz" %}</a>
+            </li>
+            <li class="nav-item">
+              <a class="menu__link" href="#contact">{% trans "Kantakt" %}</a>
+            </li>
+          </ul>
+        </div>
+        <div class="contacts d-flex align-items-center">
+          <div class="contacts__desc">
+            <a href="tel:+998881599990" class="contacts__phone">+998 (88) 159-99-90</a>
+            <p class="contacts__info">{% trans "Ish vaxtimiz 10:00 dan 20:00 gacha" %}</p>
+          </div>
+          <div class="contacts__link">
+            <a href="https://www.instagram.com/multi_cake1/?igshid=1dfozn5vmm8uz" class="contacts__link-social">
+              <img src="{% static 'img/contact-social/instagram-con.svg' %}" alt="instagram" class="contacts__link-social-img" />
+            </a>
+            <a href="https://t.me/cook_cakedipush" class="contacts__link-social">
+              <img src="{% static 'img/contact-social/telegram-con.svg' %}" alt="telegram" class="contacts__link-social-img" />
+            </a>
+          </div>
+        </div>
+        <div class="
+                flex flex-col
+                justify-center
+                space-y-1
+                items-center
+                tillarUzbRus
+              ">
+            <!-- <a href="#" class="header__uzb">UZB</a>
+            <a href="#" class="header__rus">РУС</a> -->
+            <form class="header__lang header__lang--active" action="{% url 'set_language' %}" method="post">
+              {% csrf_token %}
+              <input name="next" type="hidden" value="{{ request.get_full_path|slice:'3:' }}" />
+              <input name="language" type="hidden" value="uz" />
+              <input class="header__lang-link" type="submit" value="Uz" />
+            </form>
+            <form class="header__lang header__lang--active" action="{% url 'set_language' %}" method="post">
+               {% csrf_token %}
+              <input name="next" type="hidden" value="{{ request.get_full_path|slice:'3:' }}" />
+              <input name="language" type="hidden" value="ru" />
+              <input class="header__lang-link" type="submit" value="Ru" />
+            </form>
+          </div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <i class="fas fa-bars"></i>
+        </button>
+      </nav>
+    </div>
+    
+  </header>
+  <main class="main" id="main">
+
+
+
+
+    
 <main class="main" id="main">
     <section class="order">
         <div class="container">
@@ -22,7 +126,7 @@
                         <h3 class="order__content-info-title"></h3>
                         <form action="" class="order-form" method="POST">
                             {% csrf_token %}
-                            <input class="order-photo" type="name" name="cake" value="{{ cake.id }}" >
+                            <input class="order-photo" type="name" name="cake" value="{{ cake.id }}" hidden>
                             <div class="order__content-zav">
                                 <label for="date" class="order__content-info-subtitle">Введите дату когда нужен
                                     торт</label>
@@ -78,7 +182,68 @@
 
 
 
+  </main>
+  <footer class="footer" id="footer">
+    <div class="container">
+      <div class="footer__content d-flex justify-content-between">
+        <div class="footer__content-info footer__content-info-dist">
+          <p class="footer__content-title">{% trans "Harakatlanish" %}</p>
+          <ul class="footer__content-nav p-0 m-0">
+            <li><a href="#cakes" class="footer__content-link footer__content-link-dist">{% trans "To'rtlar" %}</a></li>
+            <li>
+              <a href="#baked" class="footer__content-link footer__content-link-dist"></a>
+            </li>
+            <li><a href="{% url 'cakeapp:delivery' %}" class="footer__content-link footer__content-link-dist">{% trans "Yetkazib berish" %}</a></li>
+            <li><a href="#portfolio" class="footer__content-link footer__content-link-dist">{% trans "Qilgan ishlarimiz" %}</a></li>
+            <li><a href="#contact" class="footer__content-link footer__content-link-dist">{% trans "Kantakt" %}</a></li>
+          </ul>
+        </div>
+        <div class="footer__content-info">
+          <div class="footer__contacts-content">
+            <p class="footer__content-title">Контакты</p>
+            <ul class="footer__content-nav p-0 m-0">
+              <li>
+                <p class="footer__content-link footer__content-desc footer__content-link-left">
+                  Yunusobod tumani katta xasanboy 4 tor ko'chasi 60-uy
+                </p>
+              </li>
+              <li>
+                <a href="tel:+998881599990" class="footer__content-link">+998 (88) 159-99-90</a>
+              </li>
+              <li>
+                <a href="saidaziz.sharifov@mail.ru" class="footer__content-link">saidaziz.sharifov@mail.ru</a>
+              </li>
+            </ul>
+          </div>
+          <div class="footer__content-info footer__content-info-margin">
+            <p class="footer__content-title-margin">Социальные сети</p>
+            <div class="footer__social-cent d-flex align-items-center justify-content-start">
+              <a href="https://www.instagram.com/multi_cake1/?igshid=1dfozn5vmm8uz" class="footer__content-social-link">
+                <img src="{% static 'img/contact-social/instagram-con.svg' %}" alt="instagram" class="footer__content-social-img" />
+              </a>
+              <a href="https://t.me/cook_cakedipush" class="footer__content-social-link">
+                <img src="{% static 'img/contact-social/telegram-con.svg' %}" alt="telegram" class="footer__content-social-img" />
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="footer__logo d-flex align-items-center">
+          <a href="/">
+            <a class="header__logo logo" href="/"><img src="{{ logo.image.url }}" alt="лого" class="logo-img" /></a>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
 
-{% endblock %}
+
+
+
+  <script src="{% static 'js/jquery-3.5.1.min.js' %}"></script>
+  <script src="{% static 'js/bootstrap.min.js' %}"></script>
+  <script src="{% static 'js/main.js' %}"></script>
+</body>
+
+</html>
 
 

@@ -16,36 +16,29 @@
     <main class="main" id="main">
         <section class="article">
             <div class="container">
-                <h2 class="article__title title">доставка</h2>
+                <h2 class="article__title title">{% trans "Yetkazib berish turlari" %}</h2>
                 <div class="article__content">
                     <div class="article__content-block d-flex align-items-center">
                         <img src="{% static 'img/delivery/1.jpg' %}" alt="">
                         <div class="article__content-info">
-                            <h3 class="article__content-block-title">Своевременная доставка</h3>
-                            <p class="article__content-block-desc mb-0">После оформления заказа наш менеджер свяжется с
-                                вами
-                                в максимально короткое время для оформления заказа и обговорения
-                                всех деталей.</p>
+                            <h3 class="article__content-block-title">{% trans "Zamonaviy Yetkazib berish" %}</h3>
+                            <p class="article__content-block-desc mb-0">{% trans "Buyurtmani joylashtirilgandan so'ng, menejerimiz buyurtma tasdiqlash va barcha tafsilotlarni muhokama qilish uchun imkon qadar tezroq siz bilan bog'lanadi." %}</p>
                         </div>
                     </div>
                     <div class="article__content-block d-flex align-items-center">
                         <img src="{% static 'img/delivery/2.jpg' %}" alt="">
                         <div class="article__content-info">
-                            <h3 class="article__content-block-title">самовывоз</h3>
+                            <h3 class="article__content-block-title">{% trans "Olib ketish" %}</h3>
                             <p class="article__content-block-desc mb-0">
-                                После изготовления торта наш менеджер свяжется с вами для того что бы вы могли приехать
-                                и забрать торт в удобный для вас
-                                время.</p>
+                             {% trans "Tortni tayyorlab bo'lgach, menejerimiz siz bilan bog'lanadi, shunda siz o'zingizga qulay vaqtda tortni olib ketishingiz mumkin." %}   </p>
                         </div>
                     </div>
                     <div class="article__content-block d-flex align-items-center">
                         <img src="{% static 'img/delivery/3.jpg' %}" alt="">
                         <div class="article__content-info">
-                            <h3 class="article__content-block-title">доставка курьером</h3>
+                            <h3 class="article__content-block-title">{% trans "KURYER ORQALI YETKAZISH" %}</h3>
                             <p class="article__content-block-desc mb-0">
-                                Доставка тортов осуществляется ежедневно с 10:00 до 20:00 без выходных и праздничных
-                                дней. Доставка по городу Ташкент
-                                бесплатная.</p>
+                              {% trans " To'rtlarni yetkazib berish har kuni dam olish va bayramlarsiz soat 10:00 dan 20:00 gacha amalga oshiriladi. Toshkent shahri bo'ylab yetkazib berish bepul." %} </p>
                         </div>
                     </div>
                 </div>
@@ -54,13 +47,13 @@
         <section class="payment">
             <div class="container">
                 <div class="payment__content">
-                    <h2 class="payment__title article__title title">способ оплаты</h2>
+                    <h2 class="payment__title article__title title">{% trans "To'lov turlari" %}</h2>
                     <div class="payment__content-article">
                         <div class="payment__content-block d-flex flex-wrap align-items-center justify-content-between">
                             <div class="payment__content-block-info">
                                 <h3 class="payment__content-block-title">uz card</h3>
                                 <p class="payment__content-block-desc">
-                                    Вы можете оплатить преобретенный товар с помощью пластиковой карты через терминал
+                                  {% trans "Xarid qilingan maxsulotlar uchun terminal orqali to'lov qilishingiz mumkun" %}
                                 </p>
                             </div>
                             <img src="{% static 'img/uzcard.png' %}" alt="" class="payment__img">
@@ -75,7 +68,7 @@
                         <div class="payment__content-block-info">
                             <h3 class="payment__content-block-title">payme, click</h3>
                             <p class="payment__content-block-desc">
-                                Вы можете оплатить преобретенный товар с помощью местных платежных систем
+                               {% trans "Siz xarid qilingan tovarlar uchun mahalliy to'lov tizimlaridan foydalangan holda to'lashingiz mumkin" %}
                             </p>
                         </div>
                         <div class="payment__content-img">
@@ -90,9 +83,9 @@
                 <div class="payment__content-article">
                     <div class="payment__content-block d-flex flex-wrap align-items-center justify-content-between">
                         <div class="payment__content-block-info">
-                            <h3 class="payment__content-block-title">наличными</h3>
+                            <h3 class="payment__content-block-title"> {% trans "Naxt ko'rinishda" %}</h3>
                             <p class="payment__content-block-desc">
-                                Вы можете оплатить преобретенный товар с помощью наличных средств
+                                {% trans "Siz sotib olingan tovarlar uchun naqd pul bilan to'lashingiz mumkin" %}
                             </p>
                         </div>
                         <img src="{% static 'img/dollar.svg' %}" alt="" class="payment__img payment__img-margin">

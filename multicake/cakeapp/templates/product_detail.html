@@ -103,7 +103,7 @@
     </div>
     
   </header>
-  <main class="main" id="main">
+
 
 
 
@@ -117,9 +117,9 @@
                     <div class="order__content-img col-xl-5">
                         <img src="{{ cake.image.url }}" alt="" class="order__img w-100">
                         <div class="order__content-img-info">
-                            <p class="order__content-img-title">Цена: <span class="order__content-img-size">{{ cake.price_for_kg }}
+                            <p class="order__content-img-title">{% trans "Narxi" %} : <span class="order__content-img-size">{{ cake.price_for_kg }}
                                     сум за 1 кг</span></p>
-                            <p class="order__content-img-desc">*минимальный заказ {{ cake.min_amount_kg }} кг</p>
+                            <p class="order__content-img-desc">*{% trans "minimal buyurtma" %} {{ cake.min_amount_kg }} кг</p>
                         </div>
                     </div>
                     <div class="order__content-info col-xl-5">
@@ -128,25 +128,23 @@
                             {% csrf_token %}
                             <input class="order-photo" type="name" name="cake" value="{{ cake.id }}" hidden>
                             <div class="order__content-zav">
-                                <label for="date" class="order__content-info-subtitle">Введите дату когда нужен
-                                    торт</label>
+                                <label for="date" class="order__content-info-subtitle">{% trans "Qaysi kunga kerekligini belgilang" %}</label>
                                 <input type="text" id="date" class="order-info order__content-info-bt"
                                     placeholder="01.02.2021" name='date' required>
                             </div>
                             <div class="order__content-zav">
-                                <label for="number" class="order__content-info-subtitle">Укажите свой
-                                    телефон</label>
+                                <label for="number" class="order__content-info-subtitle">{% trans "Telefon raqingizni qoldiring" %}</label>
                                 <input type="text" id="number" class="order-info order__content-info-bt"
                                     placeholder="+998 90 125 70 07" name='number' required>
                             </div>
                             <div class="order__content-zav">
-                                <label for="how_many_kg" class="order__content-info-subtitle">Колличество
-                                    килограмм</label>
+                                <label for="how_many_kg" class="order__content-info-subtitle">{% trans "Kilogramni belgilang" %}
+                                    </label>
                                 <input type="text" id="how_many_kg" class="order-info order__content-info-bt" placeholder="1-12"
                                 name='how_many_kg'required>
                             </div>
                             <div class="order__content-zav">
-                                <label for="filling" class="order__content-info-subtitle">Выберите начинку</label>
+                                <label for="filling" class="order__content-info-subtitle">{% trans "Nachinkani tanlang" %}</label>
                                 <select id="filling" class="order-info order__content-info-bt order__content-info-size" name='filling'>
                                     {% for filling in fillings %}
                                     <option value="{{ filling.id }}">{{ filling }}</option>
@@ -154,19 +152,19 @@
                                 </select>
                             </div>
                             <div class="order__content-zav">
-                                <label for="writing" class="order__content-info-subtitle">Надпись на торте</label>
+                                <label for="writing" class="order__content-info-subtitle">{% trans "To'rt ustiga yozuv" %}</label>
                                 <input type="text" id="writing" class="order-info order__content-info-bt"
                                     placeholder="Введите надпись" name='writing' required>
                             </div>
                             
                             <div class="order__content-zav">
-                                <label for="type_of_delivery" class="order__content-info-subtitle">Выберите способ доставки</label>
+                                <label for="type_of_delivery" class="order__content-info-subtitle">{% trans "Yetkazish turini tanlang" %}</label>
                                 <select id="type_of_delivery" class="order-info order__content-info-bt order__content-info-size" name='type_of_delivery'>
-                                    <option value="1">{% trans "Самовывоз" %}</option>
-                                    <option value="2">{% trans "Доставка" %}</option>
+                                    <option value="1">{% trans "Olib ketish" %}</option>
+                                    <option value="2">{% trans "Yetkazib berish" %}</option>
                                 </select>
                             </div>
-                            <button type="submit" class="contact__information-phone-link order__btn ">Заказать</button>
+                            <button type="submit" class="contact__information-phone-link order__btn ">{% trans "Buyurtma qilish" %}</button>
                         </form>
                     </div>
                 </div>
@@ -183,7 +181,7 @@
 
 
   </main>
-  <footer class="footer" id="footer">
+ <footer class="footer" id="footer">
     <div class="container">
       <div class="footer__content d-flex justify-content-between">
         <div class="footer__content-info footer__content-info-dist">
@@ -200,11 +198,11 @@
         </div>
         <div class="footer__content-info">
           <div class="footer__contacts-content">
-            <p class="footer__content-title">Контакты</p>
+            <p class="footer__content-title">{% trans "Kantaktlarimiz" %}</p>
             <ul class="footer__content-nav p-0 m-0">
               <li>
                 <p class="footer__content-link footer__content-desc footer__content-link-left">
-                  Yunusobod tumani katta xasanboy 4 tor ko'chasi 60-uy
+                  {% trans "Yunusobod tumani katta xasanboy 4 tor ko'chasi 60-uy" %}
                 </p>
               </li>
               <li>
@@ -216,7 +214,7 @@
             </ul>
           </div>
           <div class="footer__content-info footer__content-info-margin">
-            <p class="footer__content-title-margin">Социальные сети</p>
+            <p class="footer__content-title-margin">{% trans "Satsial a'loqa " %}</p>
             <div class="footer__social-cent d-flex align-items-center justify-content-start">
               <a href="https://www.instagram.com/multi_cake1/?igshid=1dfozn5vmm8uz" class="footer__content-social-link">
                 <img src="{% static 'img/contact-social/instagram-con.svg' %}" alt="instagram" class="footer__content-social-img" />

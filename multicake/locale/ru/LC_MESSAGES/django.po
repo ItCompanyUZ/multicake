@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-14 20:14+0500\n"
+"POT-Creation-Date: 2022-03-17 17:18+0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -57,14 +57,20 @@ msgstr "Состояние"
 msgid "Raqam noto'g'ri kiritildi"
 msgstr "Номер был введен неправильно"
 
-#: cakeapp/models.py:108 cakeapp/templates/index.html:120
+#: cakeapp/models.py:108 cakeapp/templates/delivery.html:31
+#: cakeapp/templates/index.html:120 cakeapp/templates/product_detail.html:163
 msgid "Olib ketish"
-msgstr "самовывоз"
+msgstr "ДОСТАВКА"
 
 #: cakeapp/models.py:109 cakeapp/templates/base.html:52
-#: cakeapp/templates/base.html:105 cakeapp/templates/index.html:112
+#: cakeapp/templates/base.html:127 cakeapp/templates/index.html:112
+#: cakeapp/templates/product_detail.html:52
+#: cakeapp/templates/product_detail.html:164
+#: cakeapp/templates/product_detail.html:194
+#, fuzzy
+#| msgid "Yetkazib berish turi"
 msgid "Yetkazib berish"
-msgstr "Доставка"
+msgstr "Выберите способ доставкиДОСТАВКА"
 
 #: cakeapp/models.py:112
 msgid "Qaysi kunga"
@@ -82,30 +88,118 @@ msgstr "Надпись на торте"
 msgid "Yetkazib berish turi"
 msgstr "Выберите способ доставки"
 
-#: cakeapp/templates/base.html:46 cakeapp/templates/base.html:101
+#: cakeapp/templates/base.html:46 cakeapp/templates/base.html:123
+#: cakeapp/templates/product_detail.html:46
+#: cakeapp/templates/product_detail.html:190
 msgid "To'rtlar"
 msgstr "Торты"
 
-#: cakeapp/templates/base.html:49
+#: cakeapp/templates/base.html:49 cakeapp/templates/product_detail.html:49
 msgid "Nachinka"
 msgstr "Начинки"
 
-#: cakeapp/templates/base.html:55 cakeapp/templates/base.html:106
-#: cakeapp/templates/index.html:137
+#: cakeapp/templates/base.html:55 cakeapp/templates/base.html:128
+#: cakeapp/templates/index.html:137 cakeapp/templates/product_detail.html:55
+#: cakeapp/templates/product_detail.html:195
 msgid "Qilgan ishlarimiz"
 msgstr "Наши работы"
 
-#: cakeapp/templates/base.html:58 cakeapp/templates/base.html:107
+#: cakeapp/templates/base.html:58 cakeapp/templates/base.html:129
+#: cakeapp/templates/product_detail.html:58
+#: cakeapp/templates/product_detail.html:196
 msgid "Kantakt"
 msgstr "Контакты"
 
-#: cakeapp/templates/base.html:65
+#: cakeapp/templates/base.html:65 cakeapp/templates/product_detail.html:65
 msgid "Ish vaxtimiz 10:00 dan 20:00 gacha"
 msgstr "График работы с 10:00 до 20:00"
 
-#: cakeapp/templates/base.html:99
+#: cakeapp/templates/base.html:121 cakeapp/templates/product_detail.html:188
 msgid "Harakatlanish"
 msgstr "Навигация"
+
+#: cakeapp/templates/base.html:134 cakeapp/templates/product_detail.html:201
+#, fuzzy
+#| msgid ""
+msgid "Kantaktlarimiz"
+msgstr "Контакты"
+
+#: cakeapp/templates/base.html:138 cakeapp/templates/index.html:219
+#: cakeapp/templates/product_detail.html:205
+msgid "Yunusobod tumani katta xasanboy 4 tor ko'chasi 60-uy"
+msgstr "Юнусабадский район, большой Хасанбой 4, улица узкая 60"
+
+#: cakeapp/templates/base.html:150
+msgid "Satsial a'loqa"
+msgstr "Социальные сети"
+
+#: cakeapp/templates/delivery.html:19
+#, fuzzy
+#| msgid "Yetkazib berish turi"
+msgid "Yetkazib berish turlari"
+msgstr "Выберите способ доставки"
+
+#: cakeapp/templates/delivery.html:24
+#, fuzzy
+#| msgid "Yetkazib berish"
+msgid "Zamonaviy Yetkazib berish"
+msgstr "Доставка"
+
+#: cakeapp/templates/delivery.html:25
+msgid ""
+"Buyurtmani joylashtirilgandan so'ng, menejerimiz buyurtma tasdiqlash va "
+"barcha tafsilotlarni muhokama qilish uchun imkon qadar tezroq siz bilan "
+"bog'lanadi."
+msgstr ""
+"После оформления заказа наш менеджер свяжется с вами в максимально короткое "
+"время для оформления заказа и обговорения всех деталей."
+
+#: cakeapp/templates/delivery.html:33
+msgid ""
+"Tortni tayyorlab bo'lgach, menejerimiz siz bilan bog'lanadi, shunda siz "
+"o'zingizga qulay vaqtda tortni olib ketishingiz mumkin."
+msgstr ""
+"После изготовления торта наш менеджер свяжется с вами для того что бы вы "
+"могли приехать и забрать торт в удобный для вас время."
+
+#: cakeapp/templates/delivery.html:39 cakeapp/templates/index.html:124
+msgid "KURYER ORQALI YETKAZISH"
+msgstr "ДОСТАВКА КУРЬЕРОМ"
+
+#: cakeapp/templates/delivery.html:41
+msgid ""
+" To'rtlarni yetkazib berish har kuni dam olish va bayramlarsiz soat 10:00 "
+"dan 20:00 gacha amalga oshiriladi. Toshkent shahri bo'ylab yetkazib berish "
+"bepul."
+msgstr ""
+"Доставка тортов осуществляется ежедневно с 10:00 до 20:00 без выходных и "
+"праздничных дней. Доставка по городу Ташкент бесплатная."
+
+#: cakeapp/templates/delivery.html:50
+msgid "To'lov turlari"
+msgstr "СПОСОБ ОПЛАТЫ"
+
+#: cakeapp/templates/delivery.html:56
+msgid ""
+"Xarid qilingan maxsulotlar uchun terminal orqali to'lov qilishingiz mumkun"
+msgstr ""
+"Вы можете оплатить преобретенный товар с помощью пластиковой карты через "
+"терминал"
+
+#: cakeapp/templates/delivery.html:71
+msgid ""
+"Siz xarid qilingan tovarlar uchun mahalliy to'lov tizimlaridan foydalangan "
+"holda to'lashingiz mumkin"
+msgstr ""
+"Вы можете оплатить преобретенный товар с помощью местных платежных систем"
+
+#: cakeapp/templates/delivery.html:86
+msgid "Naxt ko'rinishda"
+msgstr "НАЛИЧНЫМИ"
+
+#: cakeapp/templates/delivery.html:88
+msgid "Siz sotib olingan tovarlar uchun naqd pul bilan to'lashingiz mumkin"
+msgstr "Вы можете оплатить преобретенный товар с помощью наличных средств"
 
 #: cakeapp/templates/index.html:21
 msgid "Maxsulotlarimiz"
@@ -116,7 +210,7 @@ msgid "Batavsil"
 msgstr "смотреть больше"
 
 #: cakeapp/templates/index.html:52
-msgid "Выпечка любой сложности на заказ"
+msgid "Barcha turdagi pishiriqlarga buyurtma olamz"
 msgstr "Выпечка любой сложности на заказ"
 
 #: cakeapp/templates/index.html:96 cakeapp/templates/index.html:156
@@ -133,41 +227,75 @@ msgstr "закончился"
 msgid "O'z vaqtida yetkazib berish"
 msgstr "Доставка"
 
-#: cakeapp/templates/index.html:124
-msgid "KURYER ORQALI YETKAZISH"
-msgstr "ДОСТАВКА КУРЬЕРОМ"
-
-#: cakeapp/templates/index.html:205
+#: cakeapp/templates/index.html:206
 msgid "ISH GRAFIKIMIZ"
 msgstr "ГРАФИК РАБОТЫ"
 
-#: cakeapp/templates/index.html:208
+#: cakeapp/templates/index.html:209
 msgid "Ish vaxtimiz"
 msgstr "Режим работы"
 
-#: cakeapp/templates/index.html:209
+#: cakeapp/templates/index.html:210
 #, fuzzy
 #| msgid "Ish vaxtimiz 10:00 dan 20:00 gacha"
 msgid "10:00 dan 20:00 gacha"
 msgstr "График работы с 10:00 до 20:00"
 
-#: cakeapp/templates/index.html:212
+#: cakeapp/templates/index.html:213
 #, fuzzy
 #| msgid "Kantakt"
 msgid "Kantakt "
 msgstr "Контакты"
 
-#: cakeapp/templates/index.html:218
-msgid "Yunusobod tumani katta xasanboy 4 tor ko'chasi 60-uy"
-msgstr "Юнусабадский район, большой Хасанбой 4, улица узкая 60"
-
-#: cakeapp/templates/index.html:221
+#: cakeapp/templates/index.html:222 cakeapp/templates/product_detail.html:217
 msgid "Satsial a'loqa "
 msgstr "Социальные сети"
 
 #: cakeapp/templates/main.html:3
 msgid "Hello"
 msgstr ""
+
+#: cakeapp/templates/product_detail.html:120
+msgid "Narxi"
+msgstr "цена"
+
+#: cakeapp/templates/product_detail.html:122
+msgid "minimal buyurtma"
+msgstr "минимальный заказ"
+
+#: cakeapp/templates/product_detail.html:131
+msgid "Qaysi kunga kerekligini belgilang"
+msgstr "Введите дату когда нужен торт"
+
+#: cakeapp/templates/product_detail.html:136
+msgid "Telefon raqingizni qoldiring"
+msgstr "Укажите свой телефон"
+
+#: cakeapp/templates/product_detail.html:141
+msgid "Kilogramni belgilang"
+msgstr "Колличество килограмм"
+
+#: cakeapp/templates/product_detail.html:147
+#, fuzzy
+#| msgid "Nachinka"
+msgid "Nachinkani tanlang"
+msgstr "Начинки"
+
+#: cakeapp/templates/product_detail.html:155
+#, fuzzy
+#| msgid "To'rt ustidagi yozuv"
+msgid "To'rt ustiga yozuv"
+msgstr "Надпись на торте"
+
+#: cakeapp/templates/product_detail.html:161
+#, fuzzy
+#| msgid "Yetkazib berish turi"
+msgid "Yetkazish turini tanlang"
+msgstr "Выберите способ доставки"
+
+#: cakeapp/templates/product_detail.html:167
+msgid "Buyurtma qilish"
+msgstr "заказать"
 
 #: multicake/settings.py:124
 msgid "O'zbek"
@@ -176,3 +304,6 @@ msgstr ""
 #: multicake/settings.py:125
 msgid "Russian"
 msgstr ""
+
+#~ msgid "Выпечка любой сложности на заказ"
+#~ msgstr "Выпечка любой сложности на заказ"

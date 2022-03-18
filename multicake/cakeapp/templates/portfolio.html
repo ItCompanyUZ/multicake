@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% load static i18n %}
+{% block content %}
+
+
+
+   <section class="work">
+      <div class="container">
+        <h2 class="work__title delivery__title title align-items-center">{% trans "Qilgan ishlarimiz" %}</h2>
+        <!-- <img src="{% static 'img/our-work/1.png' %}" alt="наши работы" class="work__img" /> -->
+        <div class="work__content">
+          <section class="main_content d-flex flex-wrap justify-content-between">
+             <!-- <img src="{% static 'img/our-work/2.png' %}" alt="" class="work__content-img" /> -->
+
+
+             <div class="container">
+              <div class="content" id="port-content">
+                  {% for port in portfolio %}
+
+                    <img src="{{ port.image.url }}" alt="" class="single_content_portfolio work__content-img m-1" />
+
+                  {% endfor %}
+              </div>
+              <div class="spinner-border text-primary mt-2 not-visible" role="status" id="spinner-portfolio">
+                  <span class="sr-only">Loading...</span>
+              </div>
+              <div class="load-more__btn mt-3" id="btn-portfolio">
+                <button type="button" class="load-button btn btn-success">{% trans "Yana" %}</button>
+              </div>
+              <div class="alert alert-danger mt-2 not-visible" role="alert" id='alert-portfolio'>
+                  {% trans "Boshqa qolmadi" %}
+              </div>
+          </div>
+          {{total_portfolio|json_script:"json-total-port"}}
+
+
+
+
+
+
+
+            {% comment %} {% for work in portfolio %}
+
+            <div class=''>
+
+
+              <img src="{{ work.image.url }}" alt="" class="work__content-img" />
+
+            </div>
+
+            {% endfor %} {% endcomment %}
+
+
+          </section>
+        </div>
+      </div>
+    </section>
+
+   {% endblock %}

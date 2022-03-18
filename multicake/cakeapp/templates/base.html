@@ -46,16 +46,16 @@
               <a class="menu__link" href="#cakes">{% trans "To'rtlar" %}</a>
             </li>
             <li class="nav-item">
-              <a class="menu__link" href="#baked">{% trans "Nachinka" %}</a>
+              <a class="menu__link" href="{% url 'cakeapp:fillings' %}">{% trans "Nachinka" %}</a>
             </li>
             <li class="nav-item">
               <a class="menu__link" href="{% url 'cakeapp:delivery' %}">{% trans "Yetkazib berish" %}</a>
             </li>
             <li class="nav-item">
-              <a class="menu__link" href="#portfolio">{% trans "Qilgan ishlarimiz" %}</a>
+              <a class="menu__link" href="{% url 'cakeapp:portfolio' %}">{% trans "Qilgan ishlarimiz" %}</a>
             </li>
             <li class="nav-item">
-              <a class="menu__link" href="#contact">{% trans "Kantakt" %}</a>
+              <a class="menu__link" href="{% url 'cakeapp:cantact' %}">{% trans "Kantakt" %}</a>
             </li>
           </ul>
         </div>

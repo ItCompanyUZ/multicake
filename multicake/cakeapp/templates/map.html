@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load static i18n %}
+{% block content %}
+
+
+<section class="contact" id='contact'>
+      <div class="contact__content d-flex flex-wrap align-items-center">
+        <iframe class="contact__content-map"
+
+          src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d135478.84642335918!2d69.26242477767289!3d41.380866262448265!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x5aba10f1e4f66309!2zNDHCsDI0JzU2LjMiTiA2OcKwMTUnNDUuMSJF!5e0!3m2!1sru!2s!4v1647435423801!5m2!1sru!2s"
+          width="50%" height="650px" frameborder="0" style="border: 0" allowfullscreen="" aria-hidden="false"
+          tabindex="0">
+        </iframe>
+        <div class="contact__content-info">
+          <h2 class="contact__title title">{% trans "ISH GRAFIKIMIZ" %}</h2>
+          <div class="contact__content-block">
+            <p class="contact__content-desc">
+              {% trans "Ish vaxtimiz" %}
+              <span class="contact__content-desc-size">{% trans "10:00 dan 20:00 gacha" %}</span>
+            </p>
+            <p class="contact__content-desc">
+              {% trans "Kantakt " %}:
+              <a href="+998881599990" class="contact__content-desc-size contact__content-desc-color">+998 (88)
+                159-99-90</a>
+            </p>
+            <p class="contact__content-desc">
+              Адрес:
+              <span class="contact__content-desc-size">{% trans "Yunusobod tumani katta xasanboy 4 tor ko'chasi 60-uy" %}</span>
+            </p>
+            <div class="contact__social">
+              <p class="contact__content-social">{% trans "Satsial a'loqa " %}</p>
+              <a href="https://www.instagram.com/multi_cake1/?igshid=1dfozn5vmm8uz"
+                class="contact__content-social-link">
+                <img src="{% static 'img/contact-social/instagram-con.svg' %}" alt="instagram" class="contact__content-social-img" />
+              </a>
+              <a href="https://t.me/cook_cakedipush" class="contact__content-social-link">
+                <img src="{% static 'img/contact-social/telegram-con.svg' %}" alt="telegram" class="contact__content-social-size" />
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+{% endblock %}

@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% load static i18n %}
+{% block content %}
+
+    <section class="baked">
+      <div class="container">
+        <h2 class="product__title title">{% trans "Barcha turdagi pishiriqlarga buyurtma olamz" %}</h2>
+
+        <div class="container">
+          <div class="content" id="content">
+
+              {% for filling in fillings %}
+
+              {% if forloop.counter|divisibleby:2 %}
+
+              <div class="single_content baked__right d-flex align-items-center justify-content-end">
+                <div class="baked__info1">
+                  <h4 class="baked__title text-uppercase fw-bold">{{ filling.name }}</h4>
+                  <p class="baked-info">
+                    Состав: {{ filling.composition }}
+                  </p>
+                </div>
+                <div class="baked__left-img">
+                  <img src="{{ filling.image.url }}" alt="" class="baked-img">
+                </div>
+              </div>
+
+              {% else %}
+
+            <div class="single_content baked__left d-flex align-items-center justify-content-start">
+              <div class="baked__left-img">
+                <img src="{{ filling.image.url }}" alt="" class="baked-img">
+              </div>
+              <div class="baked__info d-flex flex-column">
+                <h4 class="baked__title text-uppercase fw-bold">{{ filling.name }}</h4>
+                <p class="baked-info">
+                  Состав: {{ filling.composition }}
+                </p>
+              </div>
+            </div>
+
+            {% endif %}
+
+          {% endfor %}
+
+          </div>
+          <div class="spinner-border text-primary mt-2 not-visible" role="status" id="spinner-filling">
+              <span class="sr-only">Loading...</span>
+          </div>
+          <div class="load-more__btn mt-3" id="btn-filling">
+              <button type="button" class="load-button btn btn-success">{% trans "Yana" %}</button>
+          </div>
+          <div class="alert alert-danger mt-2 not-visible" role="alert" id='alert-filling'>
+              {% trans "Boshqa qolmadi" %}
+          </div>
+      </div>
+      {{total_fillings|json_script:"json-total"}}
+
+      </div>
+
+    </section>
+
+{% endblock %}

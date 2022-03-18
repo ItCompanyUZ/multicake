@@ -32,6 +32,32 @@ class MainView(generic.TemplateView):
         return context
 
 
+class PortfolioView(generic.TemplateView):
+
+    template_name = 'portfolio.html'
+
+    def get_context_data(self, **kwargs):
+
+        context = super().get_context_data(**kwargs)
+        context['portfolio'] = Portfolio.objects.all().order_by('-id')[0:6]
+        context['total_portfolio'] = Portfolio.objects.count()
+
+        return context
+
+
+class FillingView(generic.TemplateView):
+
+    template_name = 'filling.html'
+
+    def get_context_data(self, **kwargs):
+
+        context = super().get_context_data(**kwargs)
+        context['fillings'] = Filling.objects.all().order_by('-id')[0:3]
+        context['total_fillings'] = Filling.objects.count()
+
+        return context
+
+
 class ProductListView(TemplateView):
     template_name = 'product.html'
 
@@ -118,6 +144,9 @@ def load_more(request):
     
     return JsonResponse(data=data)
 
+
+class CantactView(TemplateView):
+    template_name = "map.html"
 
 
 class DeliveryView(TemplateView):

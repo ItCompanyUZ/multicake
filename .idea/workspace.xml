@@ -6,14 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="9b9d71f0-19fe-46a2-9f7b-1a2fb54809f8" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/multicake/cakeapp/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/multicake/cakeapp/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/multicake/cakeapp/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/multicake/cakeapp/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/multicake/cakeapp/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/multicake/cakeapp/templates/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/multicake/cakeapp/templates/delivery.html" beforeDir="false" afterPath="$PROJECT_DIR$/multicake/cakeapp/templates/delivery.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/multicake/cakeapp/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/multicake/cakeapp/templates/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/multicake/cakeapp/templates/map.html" beforeDir="false" afterPath="$PROJECT_DIR$/multicake/cakeapp/templates/map.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/multicake/cakeapp/templates/product.html" beforeDir="false" afterPath="$PROJECT_DIR$/multicake/cakeapp/templates/product.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/multicake/cakeapp/templates/product_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/multicake/cakeapp/templates/product_detail.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/multicake/cakeapp/translation.py" beforeDir="false" afterPath="$PROJECT_DIR$/multicake/cakeapp/translation.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/multicake/locale/ru/LC_MESSAGES/django.po" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-18 18:31+0500\n"
+"POT-Creation-Date: 2022-03-18 19:59+0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -70,13 +70,13 @@ msgid "Raqam noto'g'ri kiritildi"
 msgstr ""
 
 #: cakeapp/models.py:112 cakeapp/templates/delivery.html:31
-#: cakeapp/templates/index.html:118 cakeapp/templates/product_detail.html:62
+#: cakeapp/templates/index.html:118 cakeapp/templates/product_detail.html:59
 msgid "Olib ketish"
-msgstr "САМОВЫВОЗ"
+msgstr "Самовывоз"
 
 #: cakeapp/models.py:113 cakeapp/templates/base.html:52
 #: cakeapp/templates/base.html:127 cakeapp/templates/delivery.html:19
-#: cakeapp/templates/index.html:110 cakeapp/templates/product_detail.html:63
+#: cakeapp/templates/index.html:110 cakeapp/templates/product_detail.html:60
 msgid "Yetkazib berish"
 msgstr "Доставка"
 
@@ -201,7 +201,7 @@ msgstr "ещё"
 #: cakeapp/templates/filling.html:54 cakeapp/templates/index.html:97
 #: cakeapp/templates/index.html:157 cakeapp/templates/portfolio.html:31
 msgid "Boshqa qolmadi"
-msgstr "закончился"
+msgstr "Закончился"
 
 #: cakeapp/templates/index.html:19 cakeapp/templates/product_filter.html:8
 msgid "Maxsulotlarimiz"
@@ -225,7 +225,7 @@ msgstr "с 10:00 до 20:00"
 
 #: cakeapp/templates/index.html:211 cakeapp/templates/map.html:22
 msgid "Kantakt "
-msgstr "КОНТАКТЫ"
+msgstr "Контакты"
 
 #: cakeapp/templates/index.html:219 cakeapp/templates/map.html:30
 msgid "Satsial a'loqa "
@@ -234,6 +234,50 @@ msgstr "Социальные сети"
 #: cakeapp/templates/main.html:3
 msgid "Hello"
 msgstr ""
+
+#: cakeapp/templates/product.html:38
+msgid "Buyurtma"
+msgstr "Заказать"
+
+#: cakeapp/templates/product_detail.html:17
+msgid "Narxi"
+msgstr "Цена"
+
+#: cakeapp/templates/product_detail.html:18
+msgid "sum 1 kg uchun"
+msgstr "сум за 1 кг"
+
+#: cakeapp/templates/product_detail.html:19
+msgid "minimal buyurtma"
+msgstr "минимальный заказ"
+
+#: cakeapp/templates/product_detail.html:28
+msgid "Qaysi sanaga tayyor bo'lsin"
+msgstr "Введите дату когда нужен торт"
+
+#: cakeapp/templates/product_detail.html:33
+msgid "Raqamingizni qoldiring"
+msgstr "Укажите свой телефон"
+
+#: cakeapp/templates/product_detail.html:38
+msgid "Necha kg"
+msgstr "Колличество килограмм"
+
+#: cakeapp/templates/product_detail.html:43
+msgid "Nachinkani tanlang"
+msgstr "Выберите начинку"
+
+#: cakeapp/templates/product_detail.html:51
+msgid "To'rt uchun yozuv"
+msgstr "Надпись на торте"
+
+#: cakeapp/templates/product_detail.html:57
+msgid "Yetkazish turi"
+msgstr "Выберите способ доставки"
+
+#: cakeapp/templates/product_detail.html:63
+msgid "Buyurtma berish"
+msgstr "Заказать"
 
 #: multicake/settings.py:125
 msgid "O'zbek"

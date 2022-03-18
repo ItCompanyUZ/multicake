@@ -32,6 +32,19 @@ class MainView(generic.TemplateView):
         return context
 
 
+class ProductFilterView(generic.TemplateView):
+
+    template_name = 'product_filter.html'
+
+
+    def get_context_data(self, **kwargs):
+
+        context = super().get_context_data(**kwargs)
+        context['cakes'] = models.CakeType.objects.all().order_by('-id')[:9]
+
+        return context
+
+
 class PortfolioView(generic.TemplateView):
 
     template_name = 'portfolio.html'

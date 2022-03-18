@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static i18n %}
+{% block content %}
+
+
+    <section class="product" id='cakes'>
+      <div class="container">
+        <h2 class="product__title title">{% trans "Maxsulotlarimiz" %}</h2>
+
+
+        <div class="tabs__content d-flex flex-wrap justify-content-between">
+          {% for cake in cakes %}
+          <div class="tabs__content-block">
+            <div class="tabs__content-block-img position-relative">
+              <a href="{% url 'cakeapp:product_list' cake.id %}" class="tabs__content-link">
+                <img src="{{ cake.image.url }}" alt="" class="tabs__content-img" />
+                <a href="{% url 'cakeapp:product_list' cake.id %}" class="look">{% trans "Batavsil" %} <span class="look__border"></span></a>
+              </a>
+            </div>
+            <div class="tabs__content-article">
+              <h3 class="tabs__content-article-title tabs__content-article-dist">{{ cake.name }}</h3>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+
+      </div>
+    </section>
+
+{% endblock %}

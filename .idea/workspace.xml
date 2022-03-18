@@ -5,12 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9b9d71f0-19fe-46a2-9f7b-1a2fb54809f8" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/multicake/cakeapp/templates/filling.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/multicake/cakeapp/templates/map.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/multicake/cakeapp/templates/portfolio.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/multicake/cakeapp/templates/product_filter.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/multicake/cakeapp/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/multicake/cakeapp/templates/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/multicake/cakeapp/templates/product_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/multicake/cakeapp/templates/product_detail.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/multicake/cakeapp/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/multicake/cakeapp/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/multicake/cakeapp/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/multicake/cakeapp/views.py" afterDir="false" />
     </list>

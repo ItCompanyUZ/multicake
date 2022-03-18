@@ -1,4 +1,4 @@
-from .models import Logo
+from .models import Logo, Contact
 
 
 def logo(request):
@@ -7,3 +7,7 @@ def logo(request):
     }
 
 
+def cantact(request):
+    return {
+        'cantact': Contact.objects.all()
+    }

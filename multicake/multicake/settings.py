@@ -67,6 +67,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'cakeapp.custom_context_processor.logo',
+                'cakeapp.custom_context_processor.cantact',
             ],
         },
     },

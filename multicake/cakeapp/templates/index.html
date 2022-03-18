@@ -2,21 +2,19 @@
 {% load static i18n %}
 {% block content %}
 
-    <div class="header__info">
+    <div>
+        <div class="header__info" style="background-image: url({{ banner.0.image.url }});">
+
+             </div>
       <div class="header__info-content container">
-          <h1 class="header__title">Выпечка и Доставка тортов в ташкенте</h1>
           <div class="header__content">
-              <p class="header__content-desc">
-                  Индивидуальный подход к каждому клиенту
-              </p>
-              <p class="header__content-desc">Большой ассортимент</p>
-              <p class="header__content-desc">Бесплатная доставка по городу Ташкент</p>
+
           </div>
       </div>
     </div>
 
 
-    <section class="product" id='cakes'>
+    <section class="product">
       <div class="container">
         <h2 class="product__title title">{% trans "Maxsulotlarimiz" %}</h2>
 

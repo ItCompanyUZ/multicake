@@ -9,5 +9,5 @@ def logo(request):
 
 def cantact(request):
     return {
-        'cantact': Contact.objects.all()
+        'cantact': Contact.objects.first()
     }

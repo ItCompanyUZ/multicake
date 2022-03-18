@@ -20,20 +20,19 @@
             </p>
             <p class="contact__content-desc">
               {% trans "Kantakt " %}:
-              <a href="+998881599990" class="contact__content-desc-size contact__content-desc-color">+998 (88)
-                159-99-90</a>
+              <a href="tel:{{ cantact.number }}" class="contact__content-desc-size contact__content-desc-color">{{ cantact.number }}</a>
             </p>
             <p class="contact__content-desc">
               Адрес:
-              <span class="contact__content-desc-size">{% trans "Yunusobod tumani katta xasanboy 4 tor ko'chasi 60-uy" %}</span>
+              <span class="contact__content-desc-size">{{ cantact.adress }}</span>
             </p>
             <div class="contact__social">
               <p class="contact__content-social">{% trans "Satsial a'loqa " %}</p>
-              <a href="https://www.instagram.com/multi_cake1/?igshid=1dfozn5vmm8uz"
+              <a href="{{ cantact.instagram }}"
                 class="contact__content-social-link">
                 <img src="{% static 'img/contact-social/instagram-con.svg' %}" alt="instagram" class="contact__content-social-img" />
               </a>
-              <a href="https://t.me/cook_cakedipush" class="contact__content-social-link">
+              <a href="{{ cantact.telegram }}" class="contact__content-social-link">
                 <img src="{% static 'img/contact-social/telegram-con.svg' %}" alt="telegram" class="contact__content-social-size" />
               </a>
             </div>

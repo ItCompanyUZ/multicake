@@ -65,10 +65,10 @@
             <p class="contacts__info">{% trans "Ish vaxtimiz 10:00 dan 20:00 gacha" %}</p>
           </div>
           <div class="contacts__link">
-            <a href="https://www.instagram.com/multi_cake1/?igshid=1dfozn5vmm8uz" class="contacts__link-social">
+            <a href="{{ cantact.instagram }}" class="contacts__link-social">
               <img src="{% static 'img/contact-social/instagram-con.svg' %}" alt="instagram" class="contacts__link-social-img" />
             </a>
-            <a href="https://t.me/cook_cakedipush" class="contacts__link-social">
+            <a href="{{ cantact.telegram }}" class="contacts__link-social">
               <img src="{% static 'img/contact-social/telegram-con.svg' %}" alt="telegram" class="contacts__link-social-img" />
             </a>
           </div>
@@ -120,13 +120,13 @@
         <div class="footer__content-info footer__content-info-dist">
           <p class="footer__content-title">{% trans "Harakatlanish" %}</p>
           <ul class="footer__content-nav p-0 m-0">
-            <li><a href="#cakes" class="footer__content-link footer__content-link-dist">{% trans "To'rtlar" %}</a></li>
+            <li><a href="{% url 'cakeapp:product_filter' %}" class="footer__content-link footer__content-link-dist">{% trans "To'rtlar" %}</a></li>
             <li>
-              <a href="#baked" class="footer__content-link footer__content-link-dist"></a>
+              <a href="{% url 'cakeapp:fillings' %}" class="footer__content-link footer__content-link-dist">{% trans "Nachinka" %}</a>
             </li>
             <li><a href="{% url 'cakeapp:delivery' %}" class="footer__content-link footer__content-link-dist">{% trans "Yetkazib berish" %}</a></li>
-            <li><a href="#portfolio" class="footer__content-link footer__content-link-dist">{% trans "Qilgan ishlarimiz" %}</a></li>
-            <li><a href="#contact" class="footer__content-link footer__content-link-dist">{% trans "Kantakt" %}</a></li>
+            <li><a href="{% url 'cakeapp:portfolio' %}" class="footer__content-link footer__content-link-dist">{% trans "Qilgan ishlarimiz" %}</a></li>
+            <li><a href="{% url 'cakeapp:cantact' %}" class="footer__content-link footer__content-link-dist">{% trans "Kantakt" %}</a></li>
           </ul>
         </div>
         <div class="footer__content-info">
@@ -135,24 +135,24 @@
             <ul class="footer__content-nav p-0 m-0">
               <li>
                 <p class="footer__content-link footer__content-desc footer__content-link-left">
-                  {% trans "Yunusobod tumani katta xasanboy 4 tor ko'chasi 60-uy" %}
+                  {{ cantact.adress }}
                 </p>
               </li>
               <li>
-                <a href="tel:+998881599990" class="footer__content-link">+998 (88) 159-99-90</a>
+                <a href="tel:{{ cantact.number }}" class="footer__content-link">{{ cantact.number }}</a>
               </li>
               <li>
-                <a href="saidaziz.sharifov@mail.ru" class="footer__content-link">saidaziz.sharifov@mail.ru</a>
+                <a href="{{ cantact.email }}" class="footer__content-link">{{ cantact.email }}</a>
               </li>
             </ul>
           </div>
           <div class="footer__content-info footer__content-info-margin">
             <p class="footer__content-title-margin">{% trans "Satsial a'loqa" %}</p>
             <div class="footer__social-cent d-flex align-items-center justify-content-start">
-              <a href="https://www.instagram.com/multi_cake1/?igshid=1dfozn5vmm8uz" class="footer__content-social-link">
+              <a href="{{ cantact.instagram }}" class="footer__content-social-link">
                 <img src="{% static 'img/contact-social/instagram-con.svg' %}" alt="instagram" class="footer__content-social-img" />
               </a>
-              <a href="https://t.me/cook_cakedipush" class="footer__content-social-link">
+              <a href="{{ cantact.telegram }}" class="footer__content-social-link">
                 <img src="{% static 'img/contact-social/telegram-con.svg' %}" alt="telegram" class="footer__content-social-img" />
               </a>
             </div>

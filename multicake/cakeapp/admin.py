@@ -24,8 +24,8 @@ class PortfolioAdmin(admin.ModelAdmin):
 
 
 @admin.register(models.Contact)
-class ContactAdmin(admin.ModelAdmin):
-    list_display = ('id', 'number', 'status')
+class ContactAdmin(TranslationAdmin):
+    list_display = ('id', 'number', 'status', 'adress', 'email')
 
 
 @admin.register(models.Order)

@@ -80,8 +80,12 @@ class Portfolio(models.Model):
 
     
 class Contact(models.Model):
-    number = models.CharField(_('Telefon raqam'), max_length=13)
+    number = models.CharField(_('Telefon raqam'), max_length=23)
+    email = models.EmailField()
+    adress = models.CharField(_('Joylashuv manzili'), max_length=250)
     status = models.BooleanField(_('Holati'), default=False)
+    instagram = models.URLField(_('Instagram uchun link'),)
+    telegram = models.URLField(_('Telegram uchun link'))
 
 
     class Meta:

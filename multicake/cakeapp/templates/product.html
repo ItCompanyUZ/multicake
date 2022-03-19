@@ -26,6 +26,20 @@
 
 <section class="product" id='cakes'>
     <div class="container">
+                                <div class="tabs">
+                    <div class="tabs__content d-flex flex-wrap justify-content-between">
+                        <a href="#!" class="tabs__control tabs__control-det tabs__control-active">Детские торты</a>
+                        <a href="#!" class="tabs__control">Свадебные торты</a>
+                        <a href="#!" class="tabs__control">Корпаративные торты</a>
+                        <a href="#!" class="tabs__control">Торты для мужчин</a>
+                        <a href="#!" class="tabs__control">Торты для женщин</a>
+                        <a href="#!" class="tabs__control">Домашняя выпечка</a>
+                        <a href="#!" class="tabs__control">Муссовые торты</a>
+                        <a href="#!" class="tabs__control">Романтические торты</a>
+                        <a href="#!" class="tabs__control">Пирожные и десерты</a>
+                    </div>
+                </div>
+        </br>
         <h2 class="product__title title product__title-dist">{{ caketype.name }}</h2>
         <div class="tabs__content-active tabs__content-active-block">
             {% for cake in cakeproduct %}

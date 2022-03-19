@@ -2,62 +2,148 @@
 {% load static i18n %}
 {% block content %}
 
-    <section class="baked">
-      <div class="container">
-        <h2 class="product__title title">{% trans "Barcha turdagi pishiriqlarga buyurtma olamz" %}</h2>
 
-        <div class="container">
-          <div class="content" id="content">
 
-              {% for filling in fillings %}
+<section class="baked" id="baked">
+  <div class="container">
+    <h2 class="product__title title">{% trans "Barcha turdagi pishiriqlarga buyurtma olamz" %}</h2>
 
-              {% if forloop.counter|divisibleby:2 %}
+    <div class="container">
+      <div class="content" id="content2">
+  
+          {% for filling in fillings %}
 
-              <div class="single_content baked__right d-flex align-items-center justify-content-end">
-                <div class="baked__info1">
-                  <h4 class="baked__title text-uppercase fw-bold">{{ filling.name }}</h4>
-                  <p class="baked-info">
-                    Состав: {{ filling.composition }}
-                  </p>
-                </div>
-                <div class="baked__left-img">
-                  <img src="{{ filling.image.url }}" alt="" class="baked-img">
-                </div>
-              </div>
+          {% if forloop.counter|divisibleby:2 %}
 
-              {% else %}
-
-            <div class="single_content baked__left d-flex align-items-center justify-content-start">
-              <div class="baked__left-img">
-                <img src="{{ filling.image.url }}" alt="" class="baked-img">
-              </div>
-              <div class="baked__info d-flex flex-column">
-                <h4 class="baked__title text-uppercase fw-bold">{{ filling.name }}</h4>
-                <p class="baked-info">
-                  Состав: {{ filling.composition }}
-                </p>
-              </div>
+          <div class="single_content2 baked__right d-flex align-items-center justify-content-end">
+            <div class="baked__info1">
+              <h4 class="baked__title text-uppercase fw-bold">{{ filling.name }}</h4>
+              <p class="baked-info">
+                Состав: {{ filling.composition }}
+              </p>
             </div>
+            <div class="baked__left-img">
+              <img src="{{ filling.image.url }}" alt="" class="baked-img">
+            </div>
+          </div> 
 
-            {% endif %}
+          {% else %}
 
-          {% endfor %}
+        <div class="single_content2 baked__left d-flex align-items-center justify-content-start">
+          <div class="baked__left-img">
+            <img src="{{ filling.image.url }}" alt="" class="baked-img">
+          </div>
+          <div class="baked__info d-flex flex-column">
+            <h4 class="baked__title text-uppercase fw-bold">{{ filling.name }}</h4>
+            <p class="baked-info">
+              Состав: {{ filling.composition }}
+            </p>
+          </div>
+        </div>
 
-          </div>
-          <div class="spinner-border text-primary mt-2 not-visible" role="status" id="spinner-filling">
-              <span class="sr-only">Loading...</span>
-          </div>
-          <div class="load-more__btn mt-3" id="btn-filling">
-              <button type="button" class="load-button btn btn-success">{% trans "Yana" %}</button>
-          </div>
-          <div class="alert alert-danger mt-2 not-visible" role="alert" id='alert-filling'>
-              {% trans "Boshqa qolmadi" %}
-          </div>
+        {% endif %}
+
+      {% endfor %}
+
       </div>
-      {{total_fillings|json_script:"json-total"}}
-
+      <div class="spinner-border text-primary mt-2 not-visible" role="status" id="spinner-filling2">
+          <span class="sr-only">Loading...</span>
       </div>
+      <div class="load-more__btn mt-3" id="btn-filling2">
+          <button type="button" class="load-button btn btn-success">{% trans "Yana" %}</button>
+      </div>
+      <div class="alert alert-danger mt-2 not-visible" role="alert" id='alert-filling2'>
+          {% trans "Boshqa qolmadi" %}
+      </div>
+  </div>
+  {{total_fillings|json_script:"json-total2"}}
 
-    </section>
+  </div>
+
+</section>
+
+
+
+
+
+
+<script>
+  const loadBtn2 = document.getElementById('btn-filling2');
+  const spinner2 = document.getElementById('spinner-filling2');
+  const total2 = JSON.parse(document.getElementById('json-total2').textContent);
+  const alert2 = document.getElementById('alert-filling2');
+
+
+
+  function loadmoreFilling2() {
+    var _current_item = $('.single_content2').length
+    const content_container = document.getElementById("content2");
+    $.ajax({
+        url: '{% url "cakeapp:load" %}',
+        type: 'GET',
+        data: {
+            'offset-4': _current_item
+        },
+        beforeSend: function () {
+            loadBtn2.classList.add('not-visible');
+            spinner2.classList.remove('not-visible'); 
+        },
+        success: function (response) {
+            const data = response.fillings
+            spinner2.classList.add('not-visible')
+            data.map((filling, index) => {
+
+                if (index%2 == 0) {
+               
+                  content_container.innerHTML += `
+
+                            <div class="single_content2 baked__right d-flex align-items-center justify-content-end">
+                              <div class="baked__info1">
+                                <h4 class="baked__title text-uppercase fw-bold">${filling.name}</h4>
+                                <p class="baked-info">
+                                  Состав: ${filling.composition}
+                                </p>
+                              </div>
+                              <div class="baked__left-img">
+                                <img src=${filling.image} alt="" class="baked-img">
+                              </div>
+                            </div> `
+                          }
+
+                    else {
+                      content_container.innerHTML += `
+                            <div class="single_content2 baked__left d-flex align-items-center justify-content-start">
+                              <div class="baked__left-img">
+                                <img src=${filling.image} alt="" class="baked-img">
+                              </div>
+                              <div class="baked__info d-flex flex-column">
+                                <h4 class="baked__title text-uppercase fw-bold">${filling.name}</h4>
+                                <p class="baked-info">
+                                  Состав: ${filling.composition}
+                                </p>
+                              </div>
+                            </div>` 
+                    }
+
+            })
+            if (_current_item == total2) {
+                
+            } else {
+                loadBtn2.classList.remove('not-visible');
+            }
+        },
+        error: function (err) {
+            console.log(err);
+        },
+    });
+}
+
+
+  loadBtn2.addEventListener('click', () => {
+    loadmoreFilling2()
+  });
+
+</script>
+
 
 {% endblock %}

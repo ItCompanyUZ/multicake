@@ -52,7 +52,7 @@ class PortfolioView(generic.TemplateView):
     def get_context_data(self, **kwargs):
 
         context = super().get_context_data(**kwargs)
-        context['portfolio'] = Portfolio.objects.all().order_by('-id')[0:6]
+        context['portfolio'] = Portfolio.objects.all().order_by('-id')[0:3]
         context['total_portfolio'] = Portfolio.objects.count()
 
         return context
@@ -126,10 +126,25 @@ class ProductDetailView(generic.DetailView):
 
 
 def load_more(request):
+
     if request.GET.get('offset'):
         offset = request.GET.get('offset')
         offset_int = int(offset)
         limit = 2
+        fillings = list(Filling.objects.values().order_by('-id')[offset_int:offset_int+limit])
+
+        for filling in fillings:
+            filling['image'] = settings.MEDIA_URL + str(filling['image'])
+            print(filling['image'])
+
+        data = {
+            'fillings': fillings
+        }
+
+    elif request.GET.get('offset-4'):
+        offset = request.GET.get('offset-4')
+        offset_int = int(offset)
+        limit = 4
         fillings = list(Filling.objects.values().order_by('-id')[offset_int:offset_int+limit])
 
         for filling in fillings:
@@ -167,14 +182,6 @@ class DeliveryView(TemplateView):
 
 
 
-
-class HomePageView(TemplateView):
-    template_name = "base.html"
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['logo'] = "nmaaa"
-        return context
 
 
 

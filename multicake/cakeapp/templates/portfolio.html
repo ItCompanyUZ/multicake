@@ -14,46 +14,85 @@
 
 
              <div class="container">
-              <div class="content" id="port-content">
+              <div class="content" id="port-content2">
                   {% for port in portfolio %}
 
-                    <img src="{{ port.image.url }}" alt="" class="single_content_portfolio work__content-img m-1" />
+                    <img src="{{ port.image.url }}" alt="" class="single_content_portfolio2 work__content-img m-1" />
 
                   {% endfor %}
               </div>
-              <div class="spinner-border text-primary mt-2 not-visible" role="status" id="spinner-portfolio">
+              <div class="spinner-border text-primary mt-2 not-visible" role="status" id="spinner-portfolio2">
                   <span class="sr-only">Loading...</span>
               </div>
-              <div class="load-more__btn mt-3" id="btn-portfolio">
+              <div class="load-more__btn mt-3" id="btn-portfolio2">
                 <button type="button" class="load-button btn btn-success">{% trans "Yana" %}</button>
               </div>
-              <div class="alert alert-danger mt-2 not-visible" role="alert" id='alert-portfolio'>
+              <div class="alert alert-danger mt-2 not-visible" role="alert" id='alert-portfolio2'>
                   {% trans "Boshqa qolmadi" %}
               </div>
           </div>
-          {{total_portfolio|json_script:"json-total-port"}}
-
-
-
-
-
-
-
-            {% comment %} {% for work in portfolio %}
-
-            <div class=''>
-
-
-              <img src="{{ work.image.url }}" alt="" class="work__content-img" />
-
-            </div>
-
-            {% endfor %} {% endcomment %}
+          {{total_portfolio|json_script:"json-total-port2"}}
 
 
           </section>
         </div>
       </div>
     </section>
+
+
+
+  <script>
+    
+    const loadBtnPort2 = document.getElementById('btn-portfolio2');
+    const spinnerPort2 = document.getElementById('spinner-portfolio2');
+    const totalPort2 = JSON.parse(document.getElementById('json-total-port2').textContent);
+    const alertPort2 = document.getElementById('alert-portfolio2');
+
+ 
+    function loadmorePortfolio2() {
+      var _current_portfolio_item = $('.single_content_portfolio2').length
+      const content_container_portfolio = document.getElementById("port-content2");
+      $.ajax({
+          url: '{% url "cakeapp:load" %}',
+          type: 'GET',
+          data: {
+              'offset-portfolio': _current_portfolio_item
+          },
+          beforeSend: function () {
+              loadBtnPort2.classList.add('not-visible');
+              spinnerPort2.classList.remove('not-visible');
+          },
+          success: function (response) {
+              const data = response.portfolio
+              console.log(data)
+              spinnerPort2.classList.add('not-visible')
+              data.map((portfolio) => {                 
+                content_container_portfolio.innerHTML += `<img src=${portfolio.image}  alt="" class="single_content_portfolio2 work__content-img m-1" />`
+
+              })
+              if (_current_portfolio_item == totalPort2) {
+                  
+              } else {
+                loadBtnPort2.classList.remove('not-visible');
+              }
+          },
+          error: function (err) {
+              console.log(err);
+          },
+      });
+  }
+
+
+    loadBtnPort2.addEventListener('click', () => {
+      loadmorePortfolio2()
+    });
+</script>
+
+
+
+
+
+
+
 
    {% endblock %}

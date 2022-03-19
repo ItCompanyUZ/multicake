@@ -14,6 +14,7 @@
                     <div class="order__content-img col-xl-5">
                         <img src="{{ cake.image.url }}" alt="" class="order__img w-100">
                         <div class="order__content-img-info">
+                            <p class="order__content-img-title">{{ cake.name }}</p>
                             <p class="order__content-img-title">{% trans "Narxi" %} : <span class="order__content-img-size">{{ cake.price_for_kg }}
                                     {% trans "sum 1 kg uchun" %}</span></p>
                             <p class="order__content-img-desc">*{% trans "minimal buyurtma" %} {{ cake.min_amount_kg }} кг</p>

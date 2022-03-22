@@ -1,3 +1,5 @@
+
+
 $(document).ready(function () {
     $(".navbar-toggler>i").click(function (e) {
         e.preventDefault();
@@ -45,8 +47,6 @@ function currentSlide(n){
     slidefun(counter)
     resetTimer()
 }
-
-
 
 
 function openCity(evt, cakeType) {

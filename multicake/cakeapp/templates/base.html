@@ -82,18 +82,18 @@
               ">
             <!-- <a href="#" class="header__uzb">UZB</a>
             <a href="#" class="header__rus">РУС</a> -->
-            <form class="header__lang header__lang--active" action="{% url 'set_language' %}" method="post">
-              {% csrf_token %}
-              <input name="next" type="hidden" value="{{ request.get_full_path|slice:'3:' }}" />
-              <input name="language" type="hidden" value="uz" />
-              <input class="header__lang-link" type="submit" value="Uz" />
-            </form>
-            <form class="header__lang header__lang--active" action="{% url 'set_language' %}" method="post">
-               {% csrf_token %}
-              <input name="next" type="hidden" value="{{ request.get_full_path|slice:'3:' }}" />
-              <input name="language" type="hidden" value="ru" />
-              <input class="header__lang-link" type="submit" value="Ru" />
-            </form>
+        <form class="header__lang" action="{% url 'set_language' %}" method="post">
+           {% csrf_token %}
+          <input name="next" type="hidden" value="{{ request.get_full_path|slice:'3:' }}" />
+          <input name="language" type="hidden" value="uz" />
+          <input class="header__lang-link" type="submit" value="Uz" />
+        </form>
+        <form class="header__lang" action="{% url 'set_language' %}" method="post">
+           {% csrf_token %}
+          <input name="next" type="hidden" value="{{ request.get_full_path|slice:'3:' }}" />
+          <input name="language" type="hidden" value="ru" />
+          <input class="header__lang-link" type="submit" value="Ru" />
+        </form>
           </div>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
           aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

@@ -55,16 +55,8 @@
             {% endfor %}
             
         </div>
-        <div class="spinner-border text-primary mt-2 not-visible" role="status" id="spinner-product">
-            <span class="sr-only">Loading...</span>
-        </div>
-        <div class="load-more__btn mt-3" id="btn-product">
-            <button type="button" class="load-button btn btn-success">{% trans "Yana" %}</button>
-        </div>
-        <div class="alert alert-danger mt-2 not-visible" role="alert" id="alert-product">
-            {% trans "Boshqa qolmadi" %}
-        </div>
-        {{total_fillings|json_script:"json-total-product"}}
+
+
     </div>
 </section>
 
@@ -72,68 +64,68 @@
 
 
 
-<script>
-    const loadBtnProd = document.getElementById('btn-product');
-    const spinnerProd = document.getElementById('spinner-product');
-    const totalProd = JSON.parse(document.getElementById('json-total-product').textContent);
-    const alertProd = document.getElementById('alert-product');
+<!--<script>-->
+<!--    const loadBtnProd = document.getElementById('btn-product');-->
+<!--    const spinnerProd = document.getElementById('spinner-product');-->
+<!--    const totalProd = JSON.parse(document.getElementById('json-total-product').textContent);-->
+<!--    const alertProd = document.getElementById('alert-product');-->
 
 
-    function loadmoreProduct() {
-        var _current_item = $('.single_product').length
-        const content_container = document.getElementById("content-product");
-        $.ajax({
-            url: '{% url "cakeapp:load" %}',
-            type: 'GET',
-            data: {
-                'offset-product': _current_item
-            },
-            beforeSend: function () {
-                loadBtnProd.classList.add('not-visible');
-                spinnerProd.classList.remove('not-visible');
-            },
-            success: function (response) {
-                const data = response.fillings
-                spinnerProd.classList.add('not-visible')
-                data.map((product) => {
-                    var pro_url = '/'
-                    console.log(pro_url)
+<!--    function loadmoreProduct() {-->
+<!--        var _current_item = $('.single_product').length-->
+<!--        const content_container = document.getElementById("content-product");-->
+<!--        $.ajax({-->
+<!--            url: '{% url "cakeapp:load" %}',-->
+<!--            type: 'GET',-->
+<!--            data: {-->
+<!--                'offset-product': _current_item-->
+<!--            },-->
+<!--            beforeSend: function () {-->
+<!--                loadBtnProd.classList.add('not-visible');-->
+<!--                spinnerProd.classList.remove('not-visible');-->
+<!--            },-->
+<!--            success: function (response) {-->
+<!--                const data = response.fillings-->
+<!--                spinnerProd.classList.add('not-visible')-->
+<!--                data.map((product) => {-->
+<!--                    var pro_url = '/'-->
+<!--                    console.log(pro_url)-->
 
-                      content_container.innerHTML += 
-                      `<div class="single_product tabs__content d-flex flex-wrap justify-content-between">
-                        <div class="tabs__content-block">
-                            <div class="tabs__content-block-img">
-                                <a href="" class="tabs__content-link">
-                                    <img src=${product.image} alt="" class="tabs__content-img">
-                                    <a href={ url: '', type: 'GET' } class="look">{% trans "Buyurtma" %}</a>
-                                </a>
-                            </div>
-                            <div class="tabs__content-article">
-                                <h3 class="tabs__content-article-title">${product.name}</h3>
-                                <p class="tabs__content-article-desc">${ product.price_for_kg} сум за 1 кг</p>
-                            </div>
-                        </div>
-                    </div>`
+<!--                      content_container.innerHTML += -->
+<!--                      `<div class="single_product tabs__content d-flex flex-wrap justify-content-between">-->
+<!--                        <div class="tabs__content-block">-->
+<!--                            <div class="tabs__content-block-img">-->
+<!--                                <a href="" class="tabs__content-link">-->
+<!--                                    <img src=${product.image} alt="" class="tabs__content-img">-->
+<!--                                    <a href={ url: '', type: 'GET' } class="look">{% trans "Buyurtma" %}</a>-->
+<!--                                </a>-->
+<!--                            </div>-->
+<!--                            <div class="tabs__content-article">-->
+<!--                                <h3 class="tabs__content-article-title">${product.name}</h3>-->
+<!--                                <p class="tabs__content-article-desc">${ product.price_for_kg} сум за 1 кг</p>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>`-->
 
-                })
-                if (_current_item == totalProd) {
+<!--                })-->
+<!--                if (_current_item == totalProd) {-->
 
-                } else {
-                    loadBtnProd.classList.remove('not-visible');
-                }
-            },
-            error: function (err) {
-                console.log(err);
-            },
-        });
-    }
+<!--                } else {-->
+<!--                    loadBtnProd.classList.remove('not-visible');-->
+<!--                }-->
+<!--            },-->
+<!--            error: function (err) {-->
+<!--                console.log(err);-->
+<!--            },-->
+<!--        });-->
+<!--    }-->
 
 
-    loadBtnProd.addEventListener('click', () => {
-        loadmoreProduct()
-    });
+<!--    loadBtnProd.addEventListener('click', () => {-->
+<!--        loadmoreProduct()-->
+<!--    });-->
 
-</script>
+<!--</script>-->
 
 
 {% endblock %}

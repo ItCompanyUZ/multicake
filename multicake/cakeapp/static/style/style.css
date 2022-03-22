@@ -1,6 +1,19 @@
 @import "font.css";
 
 
+.header__lang-link {
+  font-size: 22px;
+  color: #F67B90;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.header__langs-mobile {
+  display: none;
+}
+
+
 .not-visible {
     display: none;
 }
@@ -82,34 +95,9 @@ a:hover {
     font-weight: 700;
 }
 
-.header__lang {
-  border: 2px solid #f08080;
-  /* background-color: #00489d; */
-  background-color: lightseagreen;
-  color: lightseagreen;
-  padding: 1px 6px;
-  border-radius: 8px;
-  transition: all 0.3s ease;
-  cursor: pointer;
-}
-
-.header__lang--active,
-.header__lang:hover {
-  background: #e9967a;
-  color: lightseagreen;
-}
 
 
 
-
-.header__rus {
-  border: 2px solid #00489d;
-  background-color: white;
-  color: #00489d;
-  padding: 1px 6px;
-  border-radius: 8px;
-  transition: all 0.3s ease;
-}
 
 
 

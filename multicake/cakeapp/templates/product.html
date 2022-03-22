@@ -24,7 +24,7 @@
 
 
 
-<section class="product" id='cakes'>
+<section class="product" id="cakes">
     <div class="container">
                 <div class="tabs">
                     <div class="tabs__content d-flex flex-wrap justify-content-between">
@@ -53,15 +53,16 @@
                 </div>
             </div>            
             {% endfor %}
-            <div class="spinner-border text-primary mt-2 not-visible" role="status" id="spinner-product">
-                <span class="sr-only">Loading...</span>
-            </div>
-            <div class="load-more__btn mt-3" id="btn-product">
-                <button type="button" class="load-button btn btn-success">{% trans "Yana" %}</button>
-            </div>
-            <div class="alert alert-danger mt-2 not-visible" role="alert" id="alert-product">
-                {% trans "Boshqa qolmadi" %}
-            </div>
+            
+        </div>
+        <div class="spinner-border text-primary mt-2 not-visible" role="status" id="spinner-product">
+            <span class="sr-only">Loading...</span>
+        </div>
+        <div class="load-more__btn mt-3" id="btn-product">
+            <button type="button" class="load-button btn btn-success">{% trans "Yana" %}</button>
+        </div>
+        <div class="alert alert-danger mt-2 not-visible" role="alert" id="alert-product">
+            {% trans "Boshqa qolmadi" %}
         </div>
         {{total_fillings|json_script:"json-total-product"}}
     </div>
@@ -94,25 +95,25 @@
             success: function (response) {
                 const data = response.fillings
                 spinnerProd.classList.add('not-visible')
-                data.map((filling, index) => {
+                data.map((product) => {
+                    var pro_url = '/'
+                    console.log(pro_url)
 
-
-                      content_container.innerHTML += `
-
-                      <div class="single_product tabs__content d-flex flex-wrap justify-content-between">
+                      content_container.innerHTML += 
+                      `<div class="single_product tabs__content d-flex flex-wrap justify-content-between">
                         <div class="tabs__content-block">
                             <div class="tabs__content-block-img">
                                 <a href="" class="tabs__content-link">
-                                    <img src="{{ cake.image.url }}" alt="" class="tabs__content-img">
-                                    <a href="{% url 'cakeapp:product' cake.id %}" class="look">{% trans "Buyurtma" %}</a>
+                                    <img src=${product.image} alt="" class="tabs__content-img">
+                                    <a href={ url: '', type: 'GET' } class="look">{% trans "Buyurtma" %}</a>
                                 </a>
                             </div>
                             <div class="tabs__content-article">
-                                <h3 class="tabs__content-article-title">{{ cake.name }}</h3>
-                                <p class="tabs__content-article-desc">{{ cake.price_for_kg }} сум за 1 кг</p>
+                                <h3 class="tabs__content-article-title">${product.name}</h3>
+                                <p class="tabs__content-article-desc">${ product.price_for_kg} сум за 1 кг</p>
                             </div>
                         </div>
-                    </div> `
+                    </div>`
 
                 })
                 if (_current_item == totalProd) {
@@ -133,8 +134,6 @@
     });
 
 </script>
-
-
 
 
 {% endblock %}

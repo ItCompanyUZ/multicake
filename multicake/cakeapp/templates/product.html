@@ -89,14 +89,14 @@
             },
             beforeSend: function () {
                 loadBtnProd.classList.add('not-visible');
-                spinnerProd.classList.remove('not-visible'); 
+                spinnerProd.classList.remove('not-visible');
             },
             success: function (response) {
                 const data = response.fillings
                 spinnerProd.classList.add('not-visible')
                 data.map((filling, index) => {
 
-                   
+
                       content_container.innerHTML += `
 
                       <div class="single_product tabs__content d-flex flex-wrap justify-content-between">
@@ -116,7 +116,7 @@
 
                 })
                 if (_current_item == totalProd) {
-                    
+
                 } else {
                     loadBtnProd.classList.remove('not-visible');
                 }

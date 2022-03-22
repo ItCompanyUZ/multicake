@@ -3,6 +3,48 @@
 {% block content %}
 
 
+<style>
+    .pagination {
+        display: flex;
+        margin-top: 15px;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .pagination a {
+        text-decoration: none;
+    }
+    
+    .pagination-number {
+        padding: 12px 17px;
+        color: #fff;
+        background-color: #F67B90;
+        box-shadow: 2px 4px 4px rgba(0, 0, 0, 0.3);
+        border-radius: 8px;
+        margin: 4px;
+    }
+    
+    .pagination-number:hover,
+    .pagination-current {
+        background-color: #FF3759;
+    }
+    
+    .pagination-action {
+        margin: 0 2px;
+        display: flex;
+        padding: 1px 2px;
+        color: #fff;
+        font-size: 1.3em;
+        align-items: center;
+    }
+    
+    .pagination-action:hover,
+    .pagination-previous,
+    .pagination-next {
+        color: #F67B90;
+    }
+
+</style>
 
 
 
@@ -37,8 +79,9 @@
 
         <h2 class="product__title title product__title-dist">{{ caketype.name }}</h2>
         <div class="tabs__content-active tabs__content-active-block" id="content-product">
-            {% for cake in cakeproduct %}
+            
             <div class="single_product tabs__content d-flex flex-wrap justify-content-between">
+                {% for cake in cakeproduct %}
                 <div class="tabs__content-block">
                     <div class="tabs__content-block-img">
                         <a href="" class="tabs__content-link">
@@ -51,81 +94,41 @@
                         <p class="tabs__content-article-desc">{{ cake.price_for_kg }} сум за 1 кг</p>
                     </div>
                 </div>
+                {% endfor %}
             </div>            
-            {% endfor %}
             
         </div>
-
-
     </div>
 </section>
 
 
 
+<div class="pagination">
+    {% if cakeproduct.has_previous %}
+    <a class="pagination-action" href="?page=1">
+        <i class='bx bx-chevrons-left' aria-hidden="true"></i> </a>
+    <a class="pagination-action" href="?page={{ cakeproduct.previous_page_number }}">
+        <i class='bx bx-chevron-left' aria-hidden="true"></i>
+    </a>
+    {% endif %}
+    {% for num in cakeproduct.paginator.page_range %}
+        {% if cakeproduct.number == num %}
+            <span class="pagination-number pagination-current">{{ num }}</span>
+        {% elif num > cakeproduct.number|add:'-3' and num < cakeproduct.number|add:'3' %}
+            <a class="pagination-number" href="?page={{ num }}">{{ num }}</a>
+        {% endif %}
+    {% endfor %}
+    {% if cakeproduct.has_next %}
+        <a class="pagination-action" href="?page={{ cakeproduct.next_page_number }}">
+            <i class='bx bx-chevron-right' aria-hidden="true"></i>
+        </a>
+        <a class="pagination-action" href="?page={{ cakeproduct.paginator.num_pages }}">
+            <i class='bx bx-chevrons-right' aria-hidden="true"></i>
+        </a>
+    {% endif %}
+</div>
 
 
-<!--<script>-->
-<!--    const loadBtnProd = document.getElementById('btn-product');-->
-<!--    const spinnerProd = document.getElementById('spinner-product');-->
-<!--    const totalProd = JSON.parse(document.getElementById('json-total-product').textContent);-->
-<!--    const alertProd = document.getElementById('alert-product');-->
-
-
-<!--    function loadmoreProduct() {-->
-<!--        var _current_item = $('.single_product').length-->
-<!--        const content_container = document.getElementById("content-product");-->
-<!--        $.ajax({-->
-<!--            url: '{% url "cakeapp:load" %}',-->
-<!--            type: 'GET',-->
-<!--            data: {-->
-<!--                'offset-product': _current_item-->
-<!--            },-->
-<!--            beforeSend: function () {-->
-<!--                loadBtnProd.classList.add('not-visible');-->
-<!--                spinnerProd.classList.remove('not-visible');-->
-<!--            },-->
-<!--            success: function (response) {-->
-<!--                const data = response.fillings-->
-<!--                spinnerProd.classList.add('not-visible')-->
-<!--                data.map((product) => {-->
-<!--                    var pro_url = '/'-->
-<!--                    console.log(pro_url)-->
-
-<!--                      content_container.innerHTML += -->
-<!--                      `<div class="single_product tabs__content d-flex flex-wrap justify-content-between">-->
-<!--                        <div class="tabs__content-block">-->
-<!--                            <div class="tabs__content-block-img">-->
-<!--                                <a href="" class="tabs__content-link">-->
-<!--                                    <img src=${product.image} alt="" class="tabs__content-img">-->
-<!--                                    <a href={ url: '', type: 'GET' } class="look">{% trans "Buyurtma" %}</a>-->
-<!--                                </a>-->
-<!--                            </div>-->
-<!--                            <div class="tabs__content-article">-->
-<!--                                <h3 class="tabs__content-article-title">${product.name}</h3>-->
-<!--                                <p class="tabs__content-article-desc">${ product.price_for_kg} сум за 1 кг</p>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </div>`-->
-
-<!--                })-->
-<!--                if (_current_item == totalProd) {-->
-
-<!--                } else {-->
-<!--                    loadBtnProd.classList.remove('not-visible');-->
-<!--                }-->
-<!--            },-->
-<!--            error: function (err) {-->
-<!--                console.log(err);-->
-<!--            },-->
-<!--        });-->
-<!--    }-->
-
-
-<!--    loadBtnProd.addEventListener('click', () => {-->
-<!--        loadmoreProduct()-->
-<!--    });-->
-
-<!--</script>-->
 
 
 {% endblock %}

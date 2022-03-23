@@ -163,19 +163,14 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
 
-STATIC_URL = 'static/admin/'
-STATICFILES_DIR = os.path.join(BASE_DIR, 'static')
+STATIC_URL = '/static/'
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static_files')]
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'static/admin/')
-
-print(STATIC_ROOT)
-print(STATIC_URL)
-print(STATICFILES_DIR)
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-
 
 
 

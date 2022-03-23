@@ -5,8 +5,8 @@ from django.conf.urls.i18n import i18n_patterns
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.sitemaps.views import sitemap
+from cakeapp.sitemaps import PostSitemap, FillingSitemap
 
-from ..cakeapp.sitemaps import PostSitemap, FillingSitemap
 
 sitemaps = {
     "posts": PostSitemap,

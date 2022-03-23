@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'cakeapp',
+    'django.contrib.sites',
+    'django.contrib.sitemaps',
 
 ]
 

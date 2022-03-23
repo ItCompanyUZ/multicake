@@ -4,7 +4,14 @@ from django.urls import path, include
 from django.conf.urls.i18n import i18n_patterns
 from django.conf import settings
 from django.conf.urls.static import static
+from django.contrib.sitemaps.views import sitemap
 
+from ..cakeapp.sitemaps import PostSitemap, FillingSitemap
+
+sitemaps = {
+    "posts": PostSitemap,
+    "fillings": FillingSitemap,
+}
 
 
 urlpatterns = [
@@ -13,9 +20,9 @@ urlpatterns = [
 ]
 
 urlpatterns += i18n_patterns(
-    path('', include('cakeapp.urls'))
+    path('', include('cakeapp.urls')),
+    path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap')
 )
-
 
 
 if settings.DEBUG:

@@ -25,7 +25,7 @@ SECRET_KEY = 'rnyo*6nwkt7(b@%up06t8%ocsda3$edwd%13&2u%6cm+z0f2_='
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['159.89.1.79']
 
 SITE_ID=1
 # Application definition
@@ -83,10 +83,22 @@ WSGI_APPLICATION = 'multicake.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'multicake',
+        'USER': 'multicake',
+        'PASSWORD': 'multicake$$$',
+        'HOST': 'localhost',
+        'PORT': '',
     }
 }
+
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#     }
+# }
 
 
 # Password validation
@@ -153,11 +165,11 @@ STATIC_URL = '/static_files/'
 STATICFILES_DIR = (
     os.path.join(BASE_DIR, 'static_files'),
 )
+STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
 
 

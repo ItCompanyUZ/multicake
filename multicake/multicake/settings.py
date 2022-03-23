@@ -161,11 +161,13 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
+STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
+
 STATIC_URL = '/static_files/'
 STATICFILES_DIR = (
-    os.path.join(BASE_DIR, 'static_files'),
+    os.path.join(BASE_DIR, 'static_files/'),
 )
-STATIC_ROOT = os.path.join(BASE_DIR, 'static_files')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static_files/')
 
 
 MEDIA_URL = '/media/'

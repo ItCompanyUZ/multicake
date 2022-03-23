@@ -2,6 +2,9 @@ from django.db import models
 from django.db.models.signals import pre_save
 from django.dispatch import receiver
 from django.utils.translation import ugettext_lazy as _
+from django.db import models
+from django.utils import timezone
+from django.urls import reverse
 
 
 
@@ -45,6 +48,8 @@ class Cake(models.Model):
     min_amount_kg = models.PositiveIntegerField(_('Eng kam buyurtma miqdori (kg)'))
     image = models.ImageField(_('Rasm'), upload_to='To\'rtlar')
 
+    def get_absolute_url(self):
+        return reverse("cakeapp:product", args=[self.id])
 
     class  Meta:
         verbose_name = 'To\'rt'
@@ -54,12 +59,13 @@ class Cake(models.Model):
         return self.name
 
 
-
 class Filling(models.Model):
     name = models.CharField(_('Nomi'), max_length=100)
     composition = models.CharField(_('Tarkibi'), max_length=255)
     image = models.ImageField(_('Rasm'),blank=True, null=True, upload_to='Nachinka')
 
+    def get_absolute_url(self):
+        return reverse("cakeapp:fillings", args=[self.id])
 
     class Meta:
         verbose_name = 'Nachinka'

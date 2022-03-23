@@ -2,6 +2,10 @@ from django.contrib.sitemaps import Sitemap
 from .models import Cake, Filling
 
 
+
+
+
+
 class PostSitemap(Sitemap):
     changefreq = "weekly"
     priority = 0.9
@@ -9,8 +13,10 @@ class PostSitemap(Sitemap):
     def items(self):
         return Cake.objects.all()
 
-    def lastmod(self, obj):
-        return obj.updated
+
+
+    # def lastmod(self, obj):
+    #     return obj.updated
 
 
 class FillingSitemap(Sitemap):
@@ -20,5 +26,5 @@ class FillingSitemap(Sitemap):
     def items(self):
         return Filling.objects.all()
 
-    def lastmod(self, obj):
-        return obj.updated
+    # def lastmod(self, obj):
+    #     return obj.updated

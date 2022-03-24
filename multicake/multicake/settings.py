@@ -25,7 +25,7 @@ SECRET_KEY = 'rnyo*6nwkt7(b@%up06t8%ocsda3$edwd%13&2u%6cm+z0f2_='
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['159.89.1.79']
+ALLOWED_HOSTS = []
 
 SITE_ID=1
 # Application definition
@@ -162,14 +162,15 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 
-STATIC_URL = 'static/'
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static_files')]
+STATIC_URL = '/static/'
+STATICFILES_DIR = (
+    os.path.join(BASE_DIR, 'static/'),
+)
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 
-
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
 
 

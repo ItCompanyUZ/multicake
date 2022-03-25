@@ -27,7 +27,7 @@ class MainView(generic.TemplateView):
         context['portfolio'] = Portfolio.objects.all().order_by('-id')[0:6]
         context['total_fillings'] = Filling.objects.count()
         context['total_portfolio'] = Portfolio.objects.count()
-        context['cakes'] = models.CakeType.objects.all().order_by[:9]
+        context['cakes'] = models.CakeType.objects.all()[:9]
         context['banner'] = models.Banner.objects.all().order_by('-id')
 
         return context

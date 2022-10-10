@@ -1,5 +1,3 @@
-from re import S
-from this import d
 from django.core.paginator import Paginator
 from django.shortcuts import redirect, render
 from django.conf import settings
